@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smartcash-v1';
+const CACHE_NAME = 'smartcash-v2';
 const ASSETS = [
   './index.html',
   './manifest.json',
