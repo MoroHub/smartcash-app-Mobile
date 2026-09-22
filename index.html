@@ -6,248 +6,393 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#07060B">
-<title>SmartCash</title>
-<!-- تمت إضافة سطر الـ Manifest هنا -->
+<meta name="theme-color" content="#07060B" id="metaThemeColor">
+<title>SmartCash KeyGen</title>
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2307060B'/%3E%3Ctext x='50' y='68' font-size='55' font-family='Georgia,serif' fill='%23E8B84B' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --surface: rgba(255,255,255,.055);
-    --surface-2: rgba(255,255,255,.09);
-    --surface-3: rgba(28,26,34,.92);
-    --border: rgba(255,255,255,.10);
-    --border-strong: rgba(255,255,255,.18);
-    --text-1:#F7F6F9;
-    --text-2:#C4C0CC;
-    --text-3:#8B8795;
-    --gold:#E8B84B;
-    --gold-2:#F4D06F;
-    --gold-soft:rgba(232,184,75,.18);
-    --green:#3DDC84;
-    --green-soft:rgba(61,220,132,.16);
-    --red:#FF6B6B;
-    --red-soft:rgba(255,107,107,.16);
-    --radius-lg:22px;
-    --radius-md:15px;
-    --safe-top:env(safe-area-inset-top,0px);
-    --safe-bottom:env(safe-area-inset-bottom,0px);
+  /* ============== THEMES ENGINE (10 THEMES) ============== */
+  :root {
+    /* Theme 1: Default Gold (Dark) */
+    --bg: #07060B; --surface: rgba(255,255,255,0.055); --surface-2: rgba(255,255,255,0.09); --surface-3: rgba(20,18,26,0.95);
+    --border: rgba(255,255,255,0.1); --border-strong: rgba(255,255,255,0.18);
+    --text-1: #F7F6F9; --text-2: #C4C0CC; --text-3: #8B8795;
+    --primary: #E8B84B; --primary-2: #F4D06F; --primary-soft: rgba(232,184,75,0.18); --btn-text: #1a1420;
+    --aurora-1: rgba(232,184,75,.4); --aurora-2: rgba(72,90,255,.4); --aurora-3: rgba(255,90,120,.4); 
+    --aurora-opacity: 1; --radius: 20px;
+    --green: #3DDC84; --green-soft: rgba(61,220,132,0.16);
+    --red: #FF6B6B; --red-soft: rgba(255,107,107,0.16);
+    --shadow: rgba(0,0,0,0.5); --glass-blur: blur(24px);
+    --aurora-fade: .85; --glass-edge: rgba(255,255,255,.06); --glass-edge-strong: rgba(255,255,255,.12);
+    --safe-top: env(safe-area-inset-top, 0px); --safe-bottom: env(safe-area-inset-bottom, 0px);
   }
+
+  /* Theme 2: Cyberpunk (Dark) */
+  [data-theme="cyber"] {
+    --bg: #05050A; --surface: rgba(0,240,255,0.05); --surface-2: rgba(255,0,60,0.1); --surface-3: rgba(5,5,10,0.95);
+    --border: rgba(0,240,255,0.2); --border-strong: rgba(255,0,60,0.4);
+    --text-1: #E0FFFF; --text-2: #A0C0C0; --text-3: #608080;
+    --primary: #00f0ff; --primary-2: #ff003c; --primary-soft: rgba(0,240,255,0.2); --btn-text: #fff;
+    --aurora-1: rgba(0,240,255,.5); --aurora-2: rgba(255,0,60,.4); --aurora-3: rgba(138,43,226,.4);
+    --radius: 8px; --shadow: rgba(0,240,255,0.15);
+  }
+
+  /* Theme 3: Midnight (Dark) */
+  [data-theme="midnight"] {
+    --bg: #0A0E17; --surface: rgba(255,255,255,0.04); --surface-2: rgba(255,255,255,0.08); --surface-3: rgba(10,14,23,0.95);
+    --border: rgba(102,252,241,0.15); --border-strong: rgba(102,252,241,0.3);
+    --text-1: #FFFFFF; --text-2: #C5C6C7; --text-3: #7D8085;
+    --primary: #66FCF1; --primary-2: #45A29E; --primary-soft: rgba(102,252,241,0.15); --btn-text: #0A0E17;
+    --aurora-1: rgba(102,252,241,.3); --aurora-2: rgba(69,162,158,.3); --aurora-3: rgba(31,40,51,.5);
+    --radius: 16px;
+  }
+
+  /* Theme 4: Forest (Dark) */
+  [data-theme="forest"] {
+    --bg: #0F1711; --surface: rgba(255,255,255,0.05); --surface-2: rgba(255,255,255,0.1); --surface-3: rgba(15,23,17,0.95);
+    --border: rgba(168,230,207,0.15); --border-strong: rgba(168,230,207,0.3);
+    --text-1: #E9F5E9; --text-2: #B0C4B1; --text-3: #7A8F7B;
+    --primary: #A8E6CF; --primary-2: #DCEDC1; --primary-soft: rgba(168,230,207,0.15); --btn-text: #0F1711;
+    --aurora-1: rgba(168,230,207,.3); --aurora-2: rgba(220,237,193,.3); --aurora-3: rgba(61,220,132,.2);
+    --radius: 24px;
+  }
+
+  /* Theme 5: Velvet (Dark) */
+  [data-theme="velvet"] {
+    --bg: #140404; --surface: rgba(255,255,255,0.04); --surface-2: rgba(255,255,255,0.08); --surface-3: rgba(20,4,4,0.95);
+    --border: rgba(255,76,76,0.15); --border-strong: rgba(255,76,76,0.3);
+    --text-1: #FFF0F0; --text-2: #D4A5A5; --text-3: #8B5E5E;
+    --primary: #FF4C4C; --primary-2: #FF8C8C; --primary-soft: rgba(255,76,76,0.15); --btn-text: #fff;
+    --aurora-1: rgba(255,76,76,.3); --aurora-2: rgba(255,140,140,.3); --aurora-3: rgba(139,0,0,.4);
+    --radius: 14px;
+  }
+  
+  /* 🌟 GLASSY LIGHT THEMES 🌟 */
+  [data-theme="pearl"] {
+    --bg: #E9EDF3; 
+    --surface: rgba(255,255,255,0.3); --surface-2: rgba(255,255,255,0.42); --surface-3: rgba(255,255,255,0.78);
+    --border: rgba(255,255,255,0.7); --border-strong: rgba(0,40,90,0.14);
+    --text-1: #16202E; --text-2: #4A5A70; --text-3: #7D8CA0;
+    --primary: #007AFF; --primary-2: #5AC8FA; --primary-soft: rgba(0,122,255,0.16); --btn-text: #fff;
+    --aurora-1: rgba(0,122,255,.38); --aurora-2: rgba(138,90,246,.30); --aurora-3: rgba(255,159,120,.26);
+    --aurora-opacity: 1; --radius: 24px; --shadow: rgba(30,60,110,0.10);
+    --glass-blur: blur(30px) saturate(190%); --aurora-fade: .3; --glass-edge: rgba(255,255,255,.75); --glass-edge-strong: rgba(255,255,255,1);
+  }
+
+  [data-theme="rose"] {
+    --bg: #FBEBF0; 
+    --surface: rgba(255,255,255,0.26); --surface-2: rgba(255,255,255,0.38); --surface-3: rgba(255,255,255,0.75);
+    --border: rgba(255,255,255,0.6); --border-strong: rgba(255,20,147,0.22);
+    --text-1: #34101E; --text-2: #7D4C63; --text-3: #A87A90;
+    --primary: #FF1493; --primary-2: #FF69B4; --primary-soft: rgba(255,20,147,0.16); --btn-text: #fff;
+    --aurora-1: rgba(255,20,147,.36); --aurora-2: rgba(147,90,246,.24); --aurora-3: rgba(255,196,110,.28);
+    --aurora-opacity: 1; --radius: 20px; --shadow: rgba(255,20,147,0.12);
+    --glass-blur: blur(30px) saturate(190%); --aurora-fade: .3; --glass-edge: rgba(255,255,255,.7); --glass-edge-strong: rgba(255,255,255,.95);
+  }
+
+  [data-theme="mint"] {
+    --bg: #E7F5EC; 
+    --surface: rgba(255,255,255,0.26); --surface-2: rgba(255,255,255,0.38); --surface-3: rgba(255,255,255,0.75);
+    --border: rgba(255,255,255,0.6); --border-strong: rgba(46,204,113,0.22);
+    --text-1: #0E2A1C; --text-2: #3F6A52; --text-3: #6E9A80;
+    --primary: #2ECC71; --primary-2: #27AE60; --primary-soft: rgba(46,204,113,0.16); --btn-text: #fff;
+    --aurora-1: rgba(46,204,113,.36); --aurora-2: rgba(0,180,216,.24); --aurora-3: rgba(255,224,130,.26);
+    --aurora-opacity: 1; --radius: 18px; --shadow: rgba(46,204,113,0.12);
+    --glass-blur: blur(30px) saturate(190%); --aurora-fade: .3; --glass-edge: rgba(255,255,255,.7); --glass-edge-strong: rgba(255,255,255,.95);
+  }
+
+  [data-theme="sunset"] {
+    --bg: #FCEEDD; 
+    --surface: rgba(255,255,255,0.26); --surface-2: rgba(255,255,255,0.38); --surface-3: rgba(255,255,255,0.75);
+    --border: rgba(255,255,255,0.6); --border-strong: rgba(255,140,0,0.22);
+    --text-1: #331700; --text-2: #7A4610; --text-3: #A87B3F;
+    --primary: #FF8C00; --primary-2: #FFA500; --primary-soft: rgba(255,140,0,0.16); --btn-text: #fff;
+    --aurora-1: rgba(255,140,0,.38); --aurora-2: rgba(255,60,120,.24); --aurora-3: rgba(255,224,140,.32);
+    --aurora-opacity: 1; --radius: 22px; --shadow: rgba(255,140,0,0.12);
+    --glass-blur: blur(30px) saturate(190%); --aurora-fade: .3; --glass-edge: rgba(255,255,255,.7); --glass-edge-strong: rgba(255,255,255,.95);
+  }
+
+  [data-theme="lavender"] {
+    --bg: #EDEAF8; 
+    --surface: rgba(255,255,255,0.26); --surface-2: rgba(255,255,255,0.38); --surface-3: rgba(255,255,255,0.75);
+    --border: rgba(255,255,255,0.6); --border-strong: rgba(138,43,226,0.22);
+    --text-1: #1E1233; --text-2: #523F7A; --text-3: #8172A3;
+    --primary: #8A2BE2; --primary-2: #9370DB; --primary-soft: rgba(138,43,226,0.16); --btn-text: #fff;
+    --aurora-1: rgba(138,43,226,.34); --aurora-2: rgba(65,105,225,.24); --aurora-3: rgba(255,182,213,.28);
+    --aurora-opacity: 1; --radius: 16px; --shadow: rgba(138,43,226,0.12);
+    --glass-blur: blur(30px) saturate(190%); --aurora-fade: .3; --glass-edge: rgba(255,255,255,.7); --glass-edge-strong: rgba(255,255,255,.95);
+  }
+
+  /* Extra glass depth for light themes only (fields/date-row/chips get their own tinted frost layer) */
+  [data-theme="pearl"] .field, [data-theme="rose"] .field, [data-theme="mint"] .field, [data-theme="sunset"] .field, [data-theme="lavender"] .field,
+  [data-theme="pearl"] .date-display-wrap, [data-theme="rose"] .date-display-wrap, [data-theme="mint"] .date-display-wrap, [data-theme="sunset"] .date-display-wrap, [data-theme="lavender"] .date-display-wrap,
+  [data-theme="pearl"] .duration-chip, [data-theme="rose"] .duration-chip, [data-theme="mint"] .duration-chip, [data-theme="sunset"] .duration-chip, [data-theme="lavender"] .duration-chip {
+    background:radial-gradient(circle at 88% 0%, var(--primary-soft), transparent 65%), var(--surface-2);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    box-shadow:inset 0 1px 0 var(--glass-edge);
+  }
+  [data-theme="pearl"] .duration-chip, [data-theme="rose"] .duration-chip, [data-theme="mint"] .duration-chip, [data-theme="sunset"] .duration-chip, [data-theme="lavender"] .duration-chip{
+    box-shadow:0 2px 8px var(--shadow), inset 0 1px 0 var(--glass-edge);
+  }
+
+  /* ============== BASE STYLES ============== */
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{height:100%;}
-  body{
-    margin:0; background:#07060B; font-family:'Tajawal', -apple-system, sans-serif; color:var(--text-1);
-    height:100dvh; overflow:hidden; position:relative; display:flex; flex-direction:column;
-  }
+  body{ margin:0; background:var(--bg); font-family:'Tajawal', sans-serif; color:var(--text-1); height:100dvh; overflow:hidden; display:flex; flex-direction:column; transition: background 0.5s ease, color 0.5s ease; }
+  
+  /* Aurora Background */
+  .aurora{ position:fixed; inset:0; z-index:0; opacity: var(--aurora-opacity); transition: opacity 0.5s; pointer-events: none; overflow:hidden;}
+  .aurora::before{ content:''; position:absolute; inset:-20%; background: radial-gradient(closest-side, var(--aurora-1), transparent), radial-gradient(closest-side, var(--aurora-2), transparent), radial-gradient(closest-side, var(--aurora-3), transparent), radial-gradient(closest-side, var(--primary-soft), transparent); background-size:65% 65%, 70% 70%, 50% 50%, 55% 55%; background-position: 15% 20%, 85% 15%, 50% 80%, 20% 85%; filter:blur(60px) saturate(130%); animation:driftAurora 22s ease-in-out infinite alternate; transition:background 0.5s;}
+  .aurora::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 0%, transparent 35%, var(--bg) 92%); opacity:var(--aurora-fade); transition:background 0.5s, opacity 0.5s;}
+  @keyframes driftAurora{ 0%{ transform:translate(0,0) rotate(0deg) scale(1); } 33%{ transform:translate(-4%,3%) rotate(6deg) scale(1.08); } 66%{ transform:translate(3%,-4%) rotate(-5deg) scale(1.05); } 100%{ transform:translate(-2%,2%) rotate(3deg) scale(1.1); } }
+  .grain{ position:fixed; inset:0; z-index:1; opacity:.045; pointer-events:none; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  /* ---------- living aurora background ---------- */
-  .aurora{ position:fixed; inset:0; overflow:hidden; z-index:0; }
-  .aurora::before{
-    content:''; position:absolute; inset:-20%;
-    background:
-      radial-gradient(closest-side, rgba(232,184,75,.55), transparent),
-      radial-gradient(closest-side, rgba(255,90,120,.42), transparent),
-      radial-gradient(closest-side, rgba(72,90,255,.5), transparent),
-      radial-gradient(closest-side, rgba(0,220,180,.35), transparent);
-    background-repeat:no-repeat;
-    background-size:65% 65%, 60% 60%, 70% 70%, 55% 55%;
-    background-position: 15% 20%, 85% 15%, 75% 80%, 15% 85%;
-    filter:blur(60px) saturate(130%);
-    animation:driftAurora 22s ease-in-out infinite alternate;
-  }
-  .aurora::after{
-    content:''; position:absolute; inset:0; background:
-      linear-gradient(180deg, rgba(7,6,11,.15) 0%, rgba(7,6,11,.55) 45%, rgba(7,6,11,.92) 78%, #07060B 100%);
-  }
-  @keyframes driftAurora{
-    0%{ transform:translate(0,0) rotate(0deg) scale(1); }
-    33%{ transform:translate(-4%,3%) rotate(8deg) scale(1.08); }
-    66%{ transform:translate(3%,-4%) rotate(-6deg) scale(1.05); }
-    100%{ transform:translate(-2%,2%) rotate(4deg) scale(1.1); }
-  }
-  .grain{
-    position:fixed; inset:0; z-index:1; opacity:.05; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
+  .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ---------- top app bar ---------- */
-  .appbar{ padding:calc(20px + var(--safe-top)) 20px 10px; flex-shrink:0; position:relative; z-index:2; }
-  .appbar-row{ display:flex; align-items:center; justify-content:space-between; }
-  .appbar-title{ font-size:29px; font-weight:900; letter-spacing:-.4px; text-shadow:0 2px 20px rgba(0,0,0,.35); }
-  .appbar-icon-btn{
-    width:38px; height:38px; border-radius:50%; background:var(--surface);
-    border:1px solid var(--border); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-    display:flex; align-items:center; justify-content:center; color:var(--text-1); cursor:pointer; transition:.15s;
+  /* ---------- Breathing glass (theme-aware: scales with --shadow / --primary-soft per theme) ---------- */
+  @keyframes breatheGlass{
+    0%,100%{ box-shadow:0 8px 24px var(--shadow), inset 0 1px 0 var(--glass-edge), 0 0 0 1px transparent; }
+    50%{ box-shadow:0 10px 32px var(--shadow), inset 0 1px 0 var(--glass-edge-strong), 0 0 0 1px var(--primary-soft); }
   }
-  .appbar-icon-btn:active{ transform:scale(.9); background:var(--surface-2); }
+  .breathe{ animation:breatheGlass 5.5s ease-in-out infinite; }
 
-  .search-bar{
-    margin-top:14px; display:flex; align-items:center; gap:8px;
-    background:var(--surface); border:1px solid var(--border); border-radius:100px;
-    padding:11px 15px; color:var(--text-3); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  }
-  .search-bar input{ border:none; background:transparent; outline:none; color:var(--text-1); font-family:inherit; font-size:14.5px; width:100%; }
-  .search-bar input::placeholder{ color:var(--text-3); }
-  .search-bar svg{ flex-shrink:0; opacity:.65; }
+  /* ---------- App Bar ---------- */
+  .appbar{ padding:calc(20px + var(--safe-top)) 20px 10px; z-index:2; flex-shrink:0; }
+  .appbar-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 14px;}
+  .appbar-title{ font-size:26px; font-weight:900; letter-spacing:-.4px; text-shadow:0 2px 10px var(--shadow); }
+  .appbar-actions { display: flex; gap: 8px; align-items: center; }
+  
+  .icon-btn{ width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--border); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); display:flex; align-items:center; justify-content:center; color:var(--text-1); cursor:pointer; transition:0.2s; position:relative; box-shadow:0 4px 15px var(--shadow), inset 0 1px 0 var(--glass-edge); }
+  .icon-btn:active{ transform:scale(.9); background:var(--surface-2); }
+  .icon-btn.active-eye { color: var(--primary); background: var(--primary-soft); border-color: var(--primary); }
+  
+  .bell-badge { position:absolute; top:-2px; right:-2px; background:var(--red); color:#fff; font-size:10px; font-weight:900; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; display:none; font-family:sans-serif; box-shadow:0 0 10px rgba(255,0,0,0.5);}
+  .bell-pulse { animation: bellShake 2s infinite; color: var(--primary); }
+  @keyframes bellShake { 0%,100%{transform:rotate(0);} 10%,30%,50%{transform:rotate(-15deg);} 20%,40%{transform:rotate(15deg);} 60%{transform:rotate(0);} }
 
-  /* ---------- content ---------- */
-  .content{ flex:1; overflow-y:auto; padding:16px 16px 130px; position:relative; z-index:2; }
+  .search-bar{ display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--border); border-radius:100px; padding:12px 16px; backdrop-filter:var(--glass-blur); box-shadow:0 4px 15px var(--shadow); transition:0.3s; }
+  .search-bar:focus-within { border-color:var(--primary); box-shadow:0 4px 20px var(--primary-soft); }
+  .search-bar input{ border:none; background:transparent; outline:none; color:var(--text-1); font-family:inherit; font-size:15px; width:100%; font-weight:700;}
+  .search-bar input::placeholder{ color:var(--text-3); font-weight:600;}
+  .search-bar svg{ color:var(--text-2); opacity:0.8; }
+
+  /* ---------- Content & Client Card ---------- */
+  .content{ flex:1; overflow-y:auto; padding:10px 16px 130px; z-index:2; display:flex; flex-direction:column; }
   .content::-webkit-scrollbar{ width:0; }
-  .section-label{ font-size:13px; color:var(--text-2); font-weight:700; margin:6px 4px 10px; text-shadow:0 1px 12px rgba(0,0,0,.4); }
-
-  /* ---------- glass client card ---------- */
-  .client-card{
-    display:flex; align-items:center; gap:13px;
-    background:var(--surface); border:1px solid var(--border);
-    backdrop-filter:blur(24px) saturate(140%); -webkit-backdrop-filter:blur(24px) saturate(140%);
-    border-radius:var(--radius-lg); padding:13px 14px; margin-bottom:10px;
-    cursor:pointer; transition:transform .15s, background .15s;
-    box-shadow:0 8px 24px -12px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
-  }
-  .client-card:active{ transform:scale(.975); background:var(--surface-2); }
-  .avatar{
-    width:48px; height:48px; border-radius:50%; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px; color:#1a1420;
-    box-shadow:0 4px 14px -3px rgba(0,0,0,.4);
-  }
+  .section-label{ font-size:13px; color:var(--text-2); font-weight:800; margin:0 4px 10px; }
+  
+  .client-card{ display:flex; align-items:center; gap:12px; background:radial-gradient(circle at 88% 10%, var(--primary-soft), transparent 55%), var(--surface); border:1px solid var(--border); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border-radius:var(--radius); padding:16px 14px; margin-bottom:12px; cursor:pointer; transition:all 0.3s; box-shadow:0 8px 24px var(--shadow); }
+  .client-card:active{ transform:scale(.97); border-color:var(--primary); background:radial-gradient(circle at 88% 10%, var(--primary-soft), transparent 55%), var(--surface-2);}
+  .client-card.suspended { opacity: 0.65; filter: grayscale(0.6); animation:none; }
+  
+  .avatar{ width:52px; height:52px; border-radius:calc(var(--radius) * 0.7); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:19px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.35); box-shadow:0 4px 12px var(--shadow), inset 0 1px 0 rgba(255,255,255,.25); flex-shrink:0;}
   .client-info{ flex:1; min-width:0; }
-  .client-name{ font-size:15.5px; font-weight:700; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .client-meta{ font-size:12.5px; color:var(--text-2); display:flex; align-items:center; gap:6px; direction:ltr; justify-content:flex-end; }
-  .dot{ width:3px; height:3px; border-radius:50%; background:var(--text-3); flex-shrink:0; }
-  .badge{ font-size:11.5px; font-weight:800; padding:3px 9px; border-radius:100px; white-space:nowrap; }
-  .badge.active{ background:var(--green-soft); color:var(--green); }
-  .badge.expired{ background:var(--red-soft); color:var(--red); }
-  .badge.today{ background:var(--gold-soft); color:var(--gold-2); }
-  .icon-btn-sm{
-    width:36px; height:36px; border-radius:50%; background:var(--surface-2);
-    display:flex; align-items:center; justify-content:center; color:var(--text-2);
-    flex-shrink:0; border:none; cursor:pointer; transition:.15s;
-  }
-  .icon-btn-sm:active{ transform:scale(.88); color:var(--gold-2); background:var(--gold-soft); }
+  .client-name{ font-size:16px; font-weight:900; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:var(--text-1);}
+  
+  .hwid-pill { display:inline-flex; align-items:center; gap:6px; background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:3px 8px; margin-bottom:8px; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05);}
+  .hwid-pill span { font-size:11.5px; color:var(--text-2); font-family:monospace; letter-spacing:0.5px; font-weight:bold;}
+  
+  .client-meta{ display:flex; align-items:center; gap:6px; }
+  .badge{ font-size:11px; font-weight:800; padding:4px 10px; border-radius:100px; display:flex; align-items:center; gap:4px; }
+  .badge.active{ background:var(--green-soft); color:var(--green); border:1px solid rgba(61,220,132,0.3);}
+  .badge.expired{ background:var(--red-soft); color:var(--red); border:1px solid rgba(255,75,75,0.3);}
+  .badge.lifetime{ background:linear-gradient(135deg, var(--primary-2), var(--primary)); color:var(--btn-text); box-shadow:0 2px 8px var(--primary-soft); border:none;}
+  .badge.suspended{ background:var(--surface-2); color:var(--text-2); text-decoration:line-through; border:1px solid var(--border-strong);}
+  
+  .card-actions { display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
+  .icon-btn-sm{ width:36px; height:36px; border-radius:50%; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--text-2); border:1px solid var(--border); cursor:pointer; transition:0.2s; box-shadow:0 2px 8px var(--shadow);}
+  .icon-btn-sm:active{ transform:scale(.85); color:var(--primary); background:var(--primary-soft); border-color:var(--primary);}
 
-  .empty-state{ display:none; flex-direction:column; align-items:center; text-align:center; padding:60px 20px; color:var(--text-3); }
+  .empty-state{ display:none; flex-direction:column; align-items:center; text-align:center; padding:40px 20px; color:var(--text-3); margin:auto 0;}
   .empty-state.show{ display:flex; }
-  .empty-state .circle{
-    width:64px; height:64px; border-radius:50%; background:var(--surface); border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--text-2);
-    backdrop-filter:blur(20px);
-  }
-  .empty-state h3{ font-size:15px; color:var(--text-1); margin:0 0 6px; font-weight:700; }
-  .empty-state p{ font-size:13px; margin:0; line-height:1.7; }
-  .spinner-wrap{ display:flex; justify-content:center; padding:50px 0; }
-  .spinner{ width:26px; height:26px; border:3px solid var(--border); border-top-color:var(--gold); border-radius:50%; animation:spin 1s linear infinite; }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .empty-state .circle{ width:70px; height:70px; border-radius:50%; background:var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--primary); backdrop-filter:var(--glass-blur); box-shadow:0 10px 30px var(--shadow); }
+  .empty-state h3{ font-size:17px; color:var(--text-1); margin:0 0 8px; font-weight:900; }
+  .empty-state p{ font-size:14px; margin:0; line-height:1.6; font-weight:600;}
 
-  /* ---------- generate key form ---------- */
-  .form-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
-    padding:18px; margin-bottom:16px; backdrop-filter:blur(24px) saturate(140%); -webkit-backdrop-filter:blur(24px) saturate(140%);
-    box-shadow:0 8px 24px -12px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
-  }
-  .form-card h4{ font-size:13px; color:var(--gold-2); font-weight:800; margin:0 0 14px; }
-  .field{ background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-md); padding:14px 15px; margin-bottom:10px; }
-  .field input{ border:none; background:transparent; outline:none; color:var(--text-1); width:100%; font-family:inherit; font-size:14.5px; }
-  .field input::placeholder{ color:var(--text-3); }
-  .field-row{ display:flex; align-items:center; justify-content:space-between; margin-top:14px; margin-bottom:6px; }
-  .field-row .label{ font-size:13px; color:var(--text-2); }
-  .date-pill{ background:var(--surface-2); border:1px solid var(--border); border-radius:100px; padding:8px 14px; font-size:13px; font-weight:700; direction:ltr; text-align:center; cursor:pointer; position:relative; }
-  .date-pill input[type=date]{ position:absolute; inset:0; opacity:0; cursor:pointer; }
-  .days-left{ background:var(--gold-soft); color:var(--gold-2); font-size:12px; font-weight:800; padding:5px 11px; border-radius:100px; }
-  .duration-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:12px; }
-  .duration-chip{
-    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-md);
-    padding:12px 4px; text-align:center; font-size:13px; font-weight:700; color:var(--text-2); cursor:pointer; transition:.15s;
-  }
-  .duration-chip.selected{ background:linear-gradient(135deg,var(--gold-2),var(--gold)); border-color:transparent; color:#1a1420; }
-  .btn-primary{
-    width:100%; background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#1a1420; border:none; border-radius:var(--radius-md);
-    padding:16px; font-family:inherit; font-size:15px; font-weight:800; margin-top:16px; cursor:pointer;
-    box-shadow:0 10px 26px -8px rgba(232,184,75,.55); transition:.15s;
-  }
-  .btn-primary:active{ transform:scale(.98); }
-  .btn-primary:disabled{ opacity:.6; }
-  .key-out{ margin-top:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-md); padding:12px 14px; font-size:11.5px; direction:ltr; text-align:left; color:var(--gold-2); word-break:break-all; display:none; }
-  .key-out.show{ display:block; }
+  /* ---------- Generate Form ---------- */
+  .form-card{ background:radial-gradient(circle at 85% 0%, var(--primary-soft), transparent 50%), var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin:auto 0; backdrop-filter:var(--glass-blur); box-shadow:0 12px 30px var(--shadow); }
+  .field{ background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:16px 16px; margin-bottom:14px; transition:0.3s; position:relative;}
+  .field:focus-within{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-soft); background:var(--surface); }
+  .field input{ border:none; background:transparent; outline:none; color:var(--text-1); width:100%; font-family:inherit; font-size:15.5px; font-weight:800;}
+  .field input::placeholder{ color:var(--text-3); font-weight:600;}
+  
+  .date-display-wrap { display:flex; align-items:center; justify-content:space-between; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:14px 16px; position:relative; margin-bottom:14px; transition:0.3s;}
+  .date-display-wrap:focus-within { border-color:var(--primary); background:var(--surface); }
+  .date-display-wrap input[type=date]{ position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; }
+  .date-part { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:900; color:var(--text-1); direction:ltr;}
+  .date-part svg { color:var(--text-3); }
+  .date-divider { width:1px; height:24px; background:var(--border-strong); }
+  .days-part { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:900; color:var(--primary); }
+  
+  .duration-row{ display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-top:20px; }
+  .duration-chip{ background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.5); padding:14px 2px; text-align:center; font-size:13.5px; font-weight:900; color:var(--text-2); cursor:pointer; transition:0.2s; box-shadow:0 2px 8px var(--shadow);}
+  .duration-chip.selected{ background:linear-gradient(135deg,var(--primary-2),var(--primary)); border-color:transparent; color:var(--btn-text); box-shadow:0 6px 15px var(--primary-soft); transform:translateY(-3px);}
+  
+  .btn-primary{ width:100%; background:linear-gradient(135deg,var(--primary-2),var(--primary)); color:var(--btn-text); border:none; border-radius:calc(var(--radius)*0.6); padding:18px; font-family:inherit; font-size:16.5px; font-weight:900; margin-top:24px; cursor:pointer; box-shadow:0 8px 24px var(--primary-soft); transition:0.2s; }
+  .btn-primary:active{ transform:scale(.97); } .btn-primary:disabled{ opacity:.5; pointer-events:none; }
+  .key-out{ margin-top:14px; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.5); padding:16px; font-size:12.5px; font-weight:800; direction:ltr; text-align:left; color:var(--primary); word-break:break-all; display:none; box-shadow:inset 0 2px 6px var(--shadow); }
+  .key-out.show{ display:block; animation:fadeIn 0.4s; }
 
-  /* ---------- floating glass tab bar ---------- */
-  .tabbar-wrap{
-    position:fixed; left:0; right:0; bottom:0; z-index:40;
-    padding:0 18px calc(18px + var(--safe-bottom));
-    display:flex; justify-content:center;
-    pointer-events:none;
-  }
-  .tabbar{
-    pointer-events:auto;
-    display:flex; gap:6px; align-items:center;
-    background:rgba(20,16,26,.55);
-    backdrop-filter:blur(28px) saturate(160%); -webkit-backdrop-filter:blur(28px) saturate(160%);
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:32px;
-    padding:7px;
-    box-shadow:0 16px 40px -12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12);
-  }
-  .tab{
-    display:flex; align-items:center; gap:8px;
-    padding:12px 16px; border-radius:26px; cursor:pointer;
-    color:var(--text-2); transition:all .35s cubic-bezier(.34,1.3,.4,1);
-    position:relative; overflow:hidden;
-  }
+  /* ===================== ORIGINAL BEAUTIFUL TABS ===================== */
+  .tabbar-wrap{ position:fixed; left:0; right:0; bottom:0; z-index:40; padding:0 18px calc(18px + var(--safe-bottom)); display:flex; justify-content:center; pointer-events:none; }
+  .tabbar{ pointer-events:auto; display:flex; gap:6px; align-items:center; background:var(--surface-3); backdrop-filter:var(--glass-blur); border:1px solid var(--border-strong); border-radius:32px; padding:7px; box-shadow:0 16px 40px -12px var(--shadow), inset 0 1px 0 var(--glass-edge-strong); }
+  .tab{ display:flex; align-items:center; gap:8px; padding:12px 16px; border-radius:26px; cursor:pointer; color:var(--text-3); transition:all .35s cubic-bezier(.34,1.3,.4,1); position:relative; overflow:hidden; }
   .tab svg{ flex-shrink:0; transition:transform .35s cubic-bezier(.34,1.5,.4,1); }
-  .tab span{
-    font-size:13px; font-weight:800; white-space:nowrap;
-    max-width:0; opacity:0; transition:max-width .35s ease, opacity .25s ease, margin .35s ease;
-    overflow:hidden;
-  }
-  .tab.active{
-    color:#1a1420;
-    background:linear-gradient(135deg,var(--gold-2),var(--gold));
-    box-shadow:0 8px 20px -6px rgba(232,184,75,.6);
-    padding-inline-end:18px;
-  }
+  .tab span{ font-size:14px; font-weight:800; white-space:nowrap; max-width:0; opacity:0; transition:max-width .35s ease, opacity .25s ease, margin .35s ease; overflow:hidden;}
+  .tab.active{ color:var(--btn-text); background:linear-gradient(135deg,var(--primary-2),var(--primary)); box-shadow:0 8px 20px -6px var(--primary-soft); padding-inline-end:18px; }
   .tab.active svg{ transform:scale(1.05); }
-  .tab.active span{ max-width:120px; opacity:1; margin-inline-start:1px; }
-  .tab:not(.active):active{ transform:scale(.9); background:rgba(255,255,255,.08); }
+  .tab.active span{ max-width:120px; opacity:1; margin-inline-start:2px; }
+  .tab:not(.active):active{ transform:scale(.9); background:var(--surface-2); }
 
-  /* ---------- bottom sheet ---------- */
-  .sheet-overlay{
-    position:fixed; inset:0; background:rgba(5,4,8,.6); backdrop-filter:blur(3px);
-    opacity:0; pointer-events:none; transition:opacity .25s; z-index:80;
-  }
+  /* ================= TOP DROPDOWN (NOTIFICATIONS) ================= */
+  .top-dropdown-scrim { position:fixed; inset:0; background:rgba(0,0,0,0.4); backdrop-filter:blur(6px); z-index:90; opacity:0; pointer-events:none; transition:0.3s; }
+  .top-dropdown-scrim.show { opacity:1; pointer-events:auto; }
+  .top-dropdown { position:fixed; top:0; left:0; right:0; z-index:100; background:var(--surface-3); backdrop-filter:var(--glass-blur); border-bottom:1px solid var(--border-strong); border-radius:0 0 var(--radius) var(--radius); padding:calc(15px + var(--safe-top)) 20px 25px; transform:translateY(-100%); transition:transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1); box-shadow:0 15px 40px var(--shadow); }
+  .top-dropdown.show { transform:translateY(0); }
+  .noti-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+  .noti-header h3 { margin:0; font-size:20px; font-weight:900; color:var(--text-1); }
+  .btn-close-dropdown { background:var(--surface-2); border:1px solid var(--border); width:38px; height:38px; border-radius:50%; color:var(--text-1); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.2s;}
+  .btn-close-dropdown:active { transform:scale(0.9); background:var(--red-soft); color:var(--red); border-color:var(--red); }
+  
+  .noti-list { max-height:55vh; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding-bottom:10px;}
+  .noti-card { display:flex; align-items:center; gap:14px; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius) * 0.7); padding:16px; cursor:pointer; transition:0.2s; position:relative; overflow:hidden; }
+  .noti-card:active { transform:scale(0.97); border-color:var(--primary); background:var(--surface);}
+  .noti-icon { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 10px var(--shadow);}
+  .noti-info { flex:1; }
+  .noti-name { font-size:15px; font-weight:900; color:var(--text-1); margin-bottom:4px; }
+  .noti-desc { font-size:12px; font-weight:800; }
+
+  /* ================= BOTTOM SHEETS ================= */
+  .sheet-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); opacity:0; pointer-events:none; transition:0.3s; z-index:80; }
   .sheet-overlay.show{ opacity:1; pointer-events:auto; }
-  .sheet{
-    position:fixed; left:0; right:0; bottom:0; background:var(--surface-3);
-    backdrop-filter:blur(30px);
-    border-radius:26px 26px 0 0; border:1px solid var(--border-strong); border-bottom:none;
-    padding:10px 20px calc(24px + var(--safe-bottom)); transform:translateY(100%); transition:transform .32s cubic-bezier(.32,.72,0,1);
-  }
+  .sheet{ position:fixed; left:0; right:0; bottom:0; background:var(--surface-3); backdrop-filter:var(--glass-blur); border-radius:var(--radius) var(--radius) 0 0; border:1px solid var(--border-strong); border-bottom:none; padding:15px 20px calc(24px + var(--safe-bottom)); transform:translateY(100%); transition:transform .4s cubic-bezier(.2, .9, .3, 1); max-height:92vh; overflow-y:auto; display:flex; flex-direction:column; box-shadow:0 -10px 40px var(--shadow); }
   .sheet-overlay.show .sheet{ transform:translateY(0); }
-  .sheet-handle{ width:36px; height:4px; background:var(--border-strong); border-radius:10px; margin:6px auto 16px; }
-  .sheet h3{ font-size:17px; font-weight:800; margin:0 0 3px; text-align:center; }
-  .sheet .sub{ font-size:12.5px; color:var(--text-3); text-align:center; margin:0 0 18px; }
-  .sheet-option{
-    display:flex; align-items:center; justify-content:space-between;
-    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-md);
-    padding:15px 16px; margin-bottom:9px; cursor:pointer; transition:.15s;
-  }
-  .sheet-option:active{ transform:scale(.98); }
-  .sheet-option.highlight{ background:var(--gold-soft); border-color:rgba(232,184,75,.35); }
-  .sheet-option .opt-title{ font-size:14.5px; font-weight:700; }
-  .sheet-option .opt-title small{ display:block; font-size:11.5px; color:var(--text-3); font-weight:500; margin-top:2px; }
-  .sheet-option.highlight .opt-title small{ color:rgba(232,184,75,.8); }
-  .chev{ opacity:.5; }
-  .sheet-cancel{ width:100%; background:transparent; border:none; color:var(--red); font-family:inherit; font-size:14.5px; font-weight:700; padding:14px; margin-top:6px; cursor:pointer; }
+  .sheet-handle{ width:45px; height:6px; background:var(--border-strong); border-radius:10px; margin:0 auto 20px; flex-shrink:0; }
+  
+  /* Profile Header */
+  .profile-header { display:flex; align-items:center; gap:10px; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:10px 16px; margin-bottom:20px; transition:0.3s;}
+  .profile-header:focus-within { border-color:var(--primary); background:var(--surface); box-shadow:0 0 0 3px var(--primary-soft);}
+  .profile-header input { flex:1; background:transparent; border:none; outline:none; color:var(--text-1); font-family:inherit; font-size:17px; font-weight:900; }
+  .profile-header .save-icon { color:var(--primary); padding:6px; background:var(--primary-soft); border-radius:8px; display:flex; align-items:center; justify-content:center;}
+  
+  /* Toggle Switch */
+  .toggle-row { display:flex; justify-content:space-between; align-items:center; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:16px 18px; margin-bottom:20px;}
+  .toggle-row span { font-size:14.5px; font-weight:900; color:var(--text-1); }
+  .switch { position:relative; display:inline-block; width:50px; height:28px; }
+  .switch input { opacity:0; width:0; height:0; }
+  .slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:var(--border-strong); transition:.4s; border-radius:34px; box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);}
+  .slider:before { position:absolute; content:""; height:20px; width:20px; left:4px; bottom:4px; background-color:#fff; transition:.4s; border-radius:50%; box-shadow:0 2px 4px rgba(0,0,0,0.3);}
+  input:checked + .slider { background-color:var(--green); }
+  input:checked + .slider:before { transform:translateX(22px); }
 
-  .toast{
-    position:fixed; bottom:110px; left:50%; transform:translateX(-50%) translateY(20px);
-    background:rgba(28,24,34,.9); backdrop-filter:blur(20px); border:1px solid var(--border-strong); color:var(--text-1);
-    padding:12px 18px; border-radius:100px; font-size:13px; font-weight:700; display:flex; align-items:center; gap:8px;
-    opacity:0; pointer-events:none; transition:.3s; z-index:100; white-space:nowrap; max-width:90vw;
-  }
+  /* Renewal UI */
+  .renewal-status-box { display:flex; align-items:center; justify-content:space-between; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:18px 16px; margin-bottom:20px; box-shadow:inset 0 2px 6px var(--shadow); }
+  .status-col { display:flex; flex-direction:column; align-items:center; text-align:center; flex:1; }
+  .status-col .lbl { font-size:11.5px; color:var(--text-3); font-weight:800; margin-bottom:6px; }
+  .status-col .val { font-size:14.5px; font-weight:900; color:var(--text-1); direction:ltr; margin-bottom:8px;}
+  .status-col .days { font-size:11.5px; font-weight:900; padding:4px 12px; border-radius:100px; background:var(--surface); border:1px solid var(--border); color:var(--text-2); display:flex; align-items:center; gap:6px;}
+  .status-col.projected .val { color:var(--primary); }
+  .status-col.projected .days { background:var(--primary-soft); color:var(--primary); border-color:var(--primary); }
+  .status-arrow { color:var(--text-3); opacity:0.6; padding:0 10px; }
+
+  .sheet-options-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+  .sheet-opt-box { background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.5); padding:16px 10px; text-align:center; cursor:pointer; transition:0.2s; }
+  .sheet-opt-box .t1 { font-size:15px; font-weight:900; color:var(--text-1); display:block; }
+  .sheet-opt-box .t2 { font-size:12px; color:var(--text-3); font-weight:700; margin-top:6px; display:block; }
+  .sheet-opt-box.selected { background:var(--primary-soft); border-color:var(--primary); transform:translateY(-3px); box-shadow:0 6px 15px var(--shadow); }
+  .sheet-opt-box.selected .t1 { color:var(--primary); }
+
+  .custom-date-wrap { display:flex; align-items:center; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.5); padding:14px 18px; margin-bottom:24px; transition:0.3s; }
+  .custom-date-wrap:focus-within { border-color:var(--primary); background:var(--surface); box-shadow:0 0 0 3px var(--primary-soft);}
+  .custom-date-wrap span { font-size:14px; font-weight:900; color:var(--text-2); flex:1; }
+  .custom-date-wrap input { background:transparent; border:none; outline:none; color:var(--text-1); font-family:inherit; font-size:14.5px; font-weight:800; width:130px; }
+
+  .sheet-cancel{ width:100%; background:transparent; border:none; color:var(--text-3); font-family:inherit; font-size:15px; font-weight:900; padding:18px; margin-top:8px; cursor:pointer; transition:0.2s;}
+  .sheet-cancel:active { color:var(--red); }
+
+  /* Settings Options */
+  .pwd-wrapper { position:relative; width:100%; display:flex; align-items:center; margin-bottom:24px;}
+  .pwd-wrapper input { background:var(--surface-2); border:1px solid var(--border); padding:16px 16px 16px 50px; border-radius:calc(var(--radius)*0.6); width:100%; color:var(--primary); font-family:monospace; font-size:14px; font-weight:bold; outline:none; transition:0.3s;}
+  .pwd-wrapper input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-soft); background:var(--surface);}
+  .pwd-wrapper .eye-btn { position:absolute; left:12px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:var(--text-2); cursor:pointer; border:none; background:transparent; }
+
+  .settings-option { display:flex; align-items:center; justify-content:space-between; background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:18px; margin-bottom:14px; cursor:pointer; transition:.2s; text-align:right; font-family:inherit; color:var(--text-1); width:100%; box-shadow:0 4px 12px var(--shadow);}
+  .settings-option:active { transform:scale(.97); border-color:var(--primary); background:var(--surface);}
+  .settings-option .opt-title{ font-size:15.5px; font-weight:900; }
+  .settings-option .opt-title small{ display:block; font-size:12px; color:var(--text-3); font-weight:700; margin-top:6px; }
+
+  /* Theme picker card (matches the visual rhythm of the other settings rows) */
+  .theme-card{ background:var(--surface-2); border:1px solid var(--border); border-radius:calc(var(--radius)*0.6); padding:18px 12px; margin-bottom:14px; box-shadow:0 4px 12px var(--shadow); display:flex; flex-direction:column; align-items:center; }
+  .theme-card-label{ font-size:14px; font-weight:900; color:var(--text-1); margin-bottom:14px; }
+
+  /* Theme Wheel (circular quick-picker: collapses to just the hub when closed, blooms open on tap) */
+  .theme-wheel { position:relative; width:104px; height:104px; transition:width .4s cubic-bezier(.3,.9,.3,1), height .4s cubic-bezier(.3,.9,.3,1); }
+  .theme-wheel.open { width:240px; height:240px; }
+  .theme-wheel::before{ content:''; position:absolute; inset:15px; border-radius:50%; border:1.5px dashed var(--border-strong); opacity:0; transition:opacity .3s ease; pointer-events:none; }
+  .theme-wheel.open::before{ opacity:.55; }
+  .tc-wrap { position:absolute; display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer;
+    opacity:0; transform:scale(.2); pointer-events:none;
+    transition:opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .theme-wheel.open .tc-wrap{ opacity:1; transform:scale(1); pointer-events:auto; }
+  .theme-wheel .tc-wrap span{ display:none; }
+  .tc { width:40px; height:40px; border-radius:50%; border:3px solid transparent; transition:0.3s; flex-shrink:0; box-shadow:0 4px 10px var(--shadow); }
+  .tc-wrap.active .tc { transform:scale(1.18); border-color:var(--text-1); box-shadow:0 0 20px var(--shadow); }
+  .tc-wrap span { font-size:12px; font-weight:800; color:var(--text-3); transition:0.3s;}
+  .tc-wrap.active span { color:var(--text-1); }
+  .theme-wheel .tc-wrap:active .tc{ transform:scale(0.92); }
+  .theme-wheel .tc-wrap:nth-child(1){ left:100px; top:20px; transition-delay:.02s; }
+  .theme-wheel .tc-wrap:nth-child(2){ left:147px; top:35px; transition-delay:.04s; }
+  .theme-wheel .tc-wrap:nth-child(3){ left:176px; top:75px; transition-delay:.06s; }
+  .theme-wheel .tc-wrap:nth-child(4){ left:176px; top:125px; transition-delay:.08s; }
+  .theme-wheel .tc-wrap:nth-child(5){ left:147px; top:165px; transition-delay:.10s; }
+  .theme-wheel .tc-wrap:nth-child(6){ left:100px; top:180px; transition-delay:.12s; }
+  .theme-wheel .tc-wrap:nth-child(7){ left:53px; top:165px; transition-delay:.14s; }
+  .theme-wheel .tc-wrap:nth-child(8){ left:24px; top:125px; transition-delay:.16s; }
+  .theme-wheel .tc-wrap:nth-child(9){ left:24px; top:75px; transition-delay:.18s; }
+  .theme-wheel .tc-wrap:nth-child(10){ left:53px; top:35px; transition-delay:.20s; }
+  .wheel-hub{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:104px; height:104px; border-radius:50%; background:var(--surface-3); border:1px solid var(--border-strong); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer; z-index:5; transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; box-shadow:0 6px 18px var(--shadow), inset 0 1px 0 var(--glass-edge); }
+  .theme-wheel.open .wheel-hub{ transform:translate(-50%,-50%) scale(1.06); box-shadow:0 10px 26px var(--shadow), inset 0 1px 0 var(--glass-edge-strong); }
+  .wheel-hub:active{ transform:translate(-50%,-50%) scale(.94); }
+  .wheel-hub-swatch{ width:36px; height:36px; border-radius:50%; box-shadow:0 4px 12px var(--shadow), inset 0 1px 0 rgba(255,255,255,.35); transition:background .4s ease; }
+  .wheel-hub span{ font-size:12px; font-weight:900; color:var(--text-1); letter-spacing:.2px; }
+  .wheel-hub-chevron{ position:absolute; bottom:8px; color:var(--text-3); transition:transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .theme-wheel.open .wheel-hub-chevron{ transform:rotate(180deg); }
+  
+  .t-def { background:linear-gradient(135deg, #F4D06F, #E8B84B); }
+  .t-cyb { background:linear-gradient(135deg, #00f0ff, #ff003c); }
+  .t-mid { background:linear-gradient(135deg, #66FCF1, #1F2833); }
+  .t-for { background:linear-gradient(135deg, #A8E6CF, #121E14); }
+  .t-vel { background:linear-gradient(135deg, #FF4C4C, #1A0505); }
+  .t-pea { background:linear-gradient(135deg, #FFFFFF, #E0E0E0); }
+  .t-ros { background:linear-gradient(135deg, #FF69B4, #FF1493); }
+  .t-min { background:linear-gradient(135deg, #2ECC71, #27AE60); }
+  .t-sun { background:linear-gradient(135deg, #FFA500, #FF8C00); }
+  .t-lav { background:linear-gradient(135deg, #9370DB, #8A2BE2); }
+
+  /* Custom Suspend Dialog */
+  .dialog-overlay { position:fixed; inset:0; background:rgba(0,0,0,.6); backdrop-filter:blur(10px); z-index:100; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:0.3s;}
+  .dialog-overlay.show { opacity:1; pointer-events:auto; }
+  .dialog-box { background:var(--surface-3); border:1px solid var(--border-strong); backdrop-filter:var(--glass-blur); border-radius:var(--radius); padding:28px 24px; width:85%; max-width:340px; text-align:center; transform:scale(0.9); transition:0.3s cubic-bezier(.2,.9,.3,1); box-shadow:0 20px 50px rgba(0,0,0,0.6); }
+  .dialog-overlay.show .dialog-box { transform:scale(1); }
+  .dialog-icon { width:70px; height:70px; margin:0 auto 20px; background:var(--red-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--red); box-shadow:0 0 20px var(--red-soft);}
+  .dialog-box h4 { margin:0 0 12px; font-size:20px; font-weight:900; color:var(--text-1); }
+  .dialog-box p { margin:0 0 24px; font-size:14.5px; color:var(--text-2); line-height:1.6; font-weight:600;}
+  .dialog-actions { display:flex; gap:12px; }
+  .dialog-btn { flex:1; padding:14px; border-radius:calc(var(--radius)*0.5); font-family:inherit; font-weight:900; font-size:15px; border:none; cursor:pointer; transition:0.2s;}
+  .btn-danger { background:var(--red); color:#fff; box-shadow:0 4px 15px var(--red-soft);}
+  .btn-danger:active { transform:scale(0.95); }
+  .btn-cancel { background:var(--surface-2); color:var(--text-1); border:1px solid var(--border);}
+  .btn-cancel:active { background:var(--surface); }
+
+  /* Toast */
+  .toast{ position:fixed; bottom:110px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--text-1); color:var(--bg); border-radius:100px; font-size:14.5px; font-weight:900; padding:16px 24px; display:flex; align-items:center; gap:12px; opacity:0; pointer-events:none; transition:0.4s cubic-bezier(.2, .9, .3, 1); z-index:110; white-space:nowrap; box-shadow:0 10px 30px var(--shadow); }
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
-  .toast .tick{ width:18px; height:18px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .toast .tick{ width:24px; height:24px; border-radius:50%; background:var(--primary); color:var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; font-weight:bold;}
+  .toast.error .tick { background: var(--red); color:#fff; }
 </style>
 </head>
 <body>
@@ -256,224 +401,413 @@
 <div class="grain"></div>
 
 <!-- ===================== TAB 1: CLIENTS ===================== -->
-<div id="view-clients" style="display:flex; flex-direction:column; height:100%;">
-  <div class="appbar">
+<div id="view-clients" style="display:none; flex-direction:column; height:100%;">
+  <div class="appbar fade-in">
     <div class="appbar-row">
-      <div class="appbar-icon-btn" id="gearBtn">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3.5a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3.5a2 2 0 014 0v.09A1.65 1.65 0 0015 5a1.65 1.65 0 001.82.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      <div class="appbar-actions">
+        <div class="icon-btn btn-settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3.5a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3.5a2 2 0 014 0v.09A1.65 1.65 0 0015 5a1.65 1.65 0 001.82.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <div class="icon-btn" id="btnToggleVis"><svg id="visIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="icon-btn btn-bell">
+          <svg class="bell-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="bell-badge"></span>
+        </div>
       </div>
-      <div class="appbar-title">سجل العملاء</div>
+      <div class="appbar-title">Clients</div>
     </div>
     <div class="search-bar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input id="searchInput" placeholder="بحث عن عميل..." oninput="filterClients()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="searchInput" placeholder="بحث عن عميل..." autocomplete="off">
     </div>
   </div>
-
-  <div class="content">
+  <div class="content fade-in">
     <div class="section-label" id="countLabel">0 عملاء</div>
     <div id="clientsList"></div>
-    <div class="empty-state" id="emptyState">
-      <div class="circle">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      </div>
-      <h3 id="emptyTitle">لا يوجد نتائج</h3>
-      <p id="emptyText">جرب اسماً مختلفاً أو امسح البحث<br>لعرض كل العملاء.</p>
-    </div>
+    <div class="empty-state" id="emptyState"><div class="circle"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3 id="emptyTitle">لا يوجد نتائج</h3><p id="emptyText">جرب اسماً مختلفاً أو امسح البحث.</p></div>
   </div>
 </div>
 
 <!-- ===================== TAB 2: GENERATE KEY ===================== -->
-<div id="view-generate" style="display:none; flex-direction:column; height:100%;">
-  <div class="appbar">
+<div id="view-generate" style="display:flex; flex-direction:column; height:100%;">
+  <div class="appbar fade-in">
     <div class="appbar-row">
-      <div class="appbar-icon-btn" id="pasteBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+      <div class="appbar-actions">
+        <div class="icon-btn btn-settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3.5a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3.5a2 2 0 014 0v.09A1.65 1.65 0 0015 5a1.65 1.65 0 001.82.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <div class="icon-btn btn-bell"><svg class="bell-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="bell-badge"></span></div>
       </div>
-      <div class="appbar-title">توليد مفتاح</div>
+      <div class="appbar-title">Generate Key</div>
     </div>
   </div>
-  <div class="content">
-    <div class="form-card">
-      <h4>بيانات العميل</h4>
-      <div class="field"><input id="txtName" placeholder="اسم العميل" list="namesList" autocomplete="off"></div>
+  <div class="content fade-in">
+    <div class="form-card breathe">
+      <h4 style="font-size:15px; color:var(--primary); font-weight:900; margin:0 0 18px;">بيانات العميل</h4>
+      <div class="field"><input id="txtName" placeholder="اسم العميل" autocomplete="off" list="namesList"></div>
       <datalist id="namesList"></datalist>
-      <div class="field"><input id="txtHwid" placeholder="كود الجهاز (HWID)" list="hwidsList" autocomplete="off"></div>
+      
+      <div class="field" style="display:flex; padding:0; overflow:hidden;">
+        <input id="txtHwid" placeholder="كود الجهاز (HWID)" autocomplete="off" list="hwidsList" style="padding:16px 18px;">
+        <button id="pasteBtn" style="background:var(--surface-2); border:none; border-right:1px solid var(--border); color:var(--text-1); padding:0 22px; cursor:pointer; font-weight:900; font-family:inherit; font-size:14.5px;">لصق</button>
+      </div>
       <datalist id="hwidsList"></datalist>
 
-      <div class="field-row">
-        <span class="label">تاريخ الانتهاء</span>
-        <span class="days-left" id="daysLeft">⏳ باقي 29 يوم</span>
-      </div>
-      <div class="date-pill" id="datePill">10/20/2026
+      <div style="margin-top:20px; margin-bottom:8px; font-size:14px; font-weight:800; color:var(--text-2);">تاريخ الانتهاء</div>
+      <div class="date-display-wrap">
         <input type="date" id="dpExpiry">
+        <div class="date-part"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> <span id="datePillText">10/20/2026</span></div>
+        <div class="date-divider"></div>
+        <div class="days-part" id="daysLeftText"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> باقي 29 يوم</div>
       </div>
 
       <div class="duration-row">
-        <div class="duration-chip" data-m="1">شهر</div>
-        <div class="duration-chip selected" data-m="6">6 شهور</div>
-        <div class="duration-chip" data-m="12">سنة</div>
+        <div class="duration-chip" data-m="1">شهر</div><div class="duration-chip selected" data-m="6">6 شهور</div>
+        <div class="duration-chip" data-m="12">سنة</div><div class="duration-chip" data-m="999">دائم</div>
       </div>
-
       <button class="btn-primary" id="btnGenerate">إنشاء المفتاح</button>
       <div class="key-out" id="keyOut"></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== FLOATING GLASS TAB BAR ===================== -->
+<!-- ===================== ORIGINAL BEAUTIFUL TAB BAR ===================== -->
 <div class="tabbar-wrap">
   <div class="tabbar">
-    <div class="tab active" id="tabBtnClients">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      <span>العملاء</span>
+    <div class="tab" id="tabBtnClients">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <span>Clients</span>
     </div>
-    <div class="tab" id="tabBtnGenerate">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.6h7.6z"/></svg>
-      <span>توليد مفتاح</span>
+    <div class="tab active" id="tabBtnGenerate">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.6h7.6z"/></svg>
+      <span>Generate</span>
     </div>
   </div>
 </div>
 
-<!-- ===================== BOTTOM SHEET: RENEW ===================== -->
+<!-- ===================== TOP DROPDOWN: NOTIFICATIONS ===================== -->
+<div class="top-dropdown-scrim" id="notiScrim"></div>
+<div class="top-dropdown" id="notiDropdown">
+  <div class="noti-header">
+    <h3>مركز التنبيهات 🔔</h3>
+    <button class="btn-close-dropdown" id="btnCloseNotiDropdown">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="noti-list" id="notiListTop">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- ===================== BOTTOM SHEET: PROFILE & RENEW ===================== -->
 <div class="sheet-overlay" id="sheetOverlay">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <h3 id="sheetClientName">تجديد: -</h3>
-    <p class="sub">اختر مدة التجديد المناسبة</p>
+    <h3 id="sheetClientName" style="margin-bottom:20px;">ملف العميل</h3>
 
-    <div class="sheet-option" data-m="1">
-      <div class="opt-title">شهر واحد<small>+30 يوم من تاريخ الانتهاء</small></div>
-      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-    </div>
-    <div class="sheet-option" data-m="3">
-      <div class="opt-title">3 شهور<small>+90 يوم من تاريخ الانتهاء</small></div>
-      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-    </div>
-    <div class="sheet-option" data-m="6">
-      <div class="opt-title">6 شهور<small>+180 يوم من تاريخ الانتهاء</small></div>
-      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-    </div>
-    <div class="sheet-option highlight" data-m="12">
-      <div class="opt-title">سنة كاملة<small>الأكثر توفيرًا للعميل</small></div>
-      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    <div class="profile-header">
+      <input type="text" id="editClientNameInput" placeholder="اسم العميل">
+      <div class="save-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
     </div>
 
-    <button class="sheet-cancel" id="btnCancelSheet">إلغاء</button>
+    <div class="toggle-row">
+      <span>تنشيط العميل (تفعيل/إيقاف)</span>
+      <label class="switch"><input type="checkbox" id="toggleSuspend"><span class="slider"></span></label>
+    </div>
+
+    <div id="renewContainer">
+      <div class="renewal-status-box">
+        <div class="status-col">
+          <span class="lbl">الوضع الحالي</span>
+          <span class="val" id="sheetCurrentDate">--/--/----</span>
+          <span class="days" id="sheetCurrentDays">باقي 0 يوم</span>
+        </div>
+        <div class="status-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="status-col projected">
+          <span class="lbl">بعد التحديث</span>
+          <span class="val" id="sheetNewDate">--/--/----</span>
+          <span class="days" id="sheetNewDays">اختر التحديث</span>
+        </div>
+      </div>
+      
+      <div class="sheet-options-grid">
+        <div class="sheet-opt-box sheet-opt" data-m="1"><span class="t1">شهر واحد</span><span class="t2">+30 يوم</span></div>
+        <div class="sheet-opt-box sheet-opt" data-m="6"><span class="t1">6 شهور</span><span class="t2">+180 يوم</span></div>
+        <div class="sheet-opt-box sheet-opt" data-m="12"><span class="t1">سنة كاملة</span><span class="t2">الأكثر توفيراً</span></div>
+        <div class="sheet-opt-box sheet-opt" data-m="999"><span class="t1">مدى الحياة</span><span class="t2">ترخيص دائم</span></div>
+      </div>
+      
+      <div class="custom-date-wrap">
+        <span>تاريخ مخصص:</span>
+        <input type="date" id="customRenewDate">
+      </div>
+    </div>
+
+    <button class="btn-primary" id="btnConfirmRenew" disabled style="margin-top:0;">حفظ التعديلات وإنشاء مفتاح</button>
+    <button class="sheet-cancel" id="btnCancelSheet">إغلاق</button>
   </div>
 </div>
 
-<div class="toast" id="toast"><span class="tick">✓</span><span id="toastText">تم بنجاح</span></div>
+<!-- ===================== SUSPEND DIALOG ===================== -->
+<div class="dialog-overlay" id="suspendDialog">
+  <div class="dialog-box">
+    <div class="dialog-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg></div>
+    <h4>تأكيد إيقاف العميل</h4>
+    <p>هل أنت متأكد من تعطيل هذا العميل؟ سيتوقف برنامجه فور تفعيل مفتاح الإيقاف.</p>
+    <div class="dialog-actions">
+      <button class="dialog-btn btn-danger" id="btnConfirmSuspend">تعطيل فوراً</button>
+      <button class="dialog-btn btn-cancel" id="btnCancelSuspend">تراجع</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BOTTOM SHEET: SETTINGS ===================== -->
+<div class="sheet-overlay" id="settingsOverlay">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3 style="font-size:20px; font-weight:900; margin-bottom:6px; text-align:center; color:var(--text-1);">الإعدادات</h3>
+    <p style="font-size:14px; color:var(--text-3); text-align:center; margin-bottom:24px; font-weight:700;">تخصيص الواجهة وإدارة النظام</p>
+
+    <div class="theme-card">
+      <span class="theme-card-label">المظهر البصري (Themes)</span>
+      <div class="theme-wheel" id="themeWheel">
+        <div class="tc-wrap" data-theme="default"><div class="tc t-def"></div><span>Gold</span></div>
+        <div class="tc-wrap" data-theme="pearl"><div class="tc t-pea"></div><span>Pearl</span></div>
+        <div class="tc-wrap" data-theme="cyber"><div class="tc t-cyb"></div><span>Cyber</span></div>
+        <div class="tc-wrap" data-theme="midnight"><div class="tc t-mid"></div><span>Night</span></div>
+        <div class="tc-wrap" data-theme="forest"><div class="tc t-for"></div><span>Forest</span></div>
+        <div class="tc-wrap" data-theme="velvet"><div class="tc t-vel"></div><span>Velvet</span></div>
+        <div class="tc-wrap" data-theme="rose"><div class="tc t-ros"></div><span>Rose</span></div>
+        <div class="tc-wrap" data-theme="mint"><div class="tc t-min"></div><span>Mint</span></div>
+        <div class="tc-wrap" data-theme="sunset"><div class="tc t-sun"></div><span>Sunset</span></div>
+        <div class="tc-wrap" data-theme="lavender"><div class="tc t-lav"></div><span>Lavender</span></div>
+        <div class="wheel-hub breathe" id="wheelHub">
+          <div class="wheel-hub-swatch" id="wheelHubSwatch"></div>
+          <span id="wheelHubLabel">Gold</span>
+          <svg class="wheel-hub-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="pwd-wrapper">
+      <input type="password" id="txtSecretKey">
+      <button id="btnToggleEye" class="eye-btn">
+        <svg id="eyeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+
+    <button id="btnForceSync" class="settings-option">
+      <div style="text-align:right;"><div style="font-size:16px; font-weight:900;">مزامنة البيانات</div><div style="font-size:13px; color:var(--text-3); font-weight:700; margin-top:6px;">تحديث من قاعدة البيانات</div></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:0.6;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 11-.59-9.57l5.25 5.25"/></svg>
+    </button>
+    
+    <button id="btnBackup" class="settings-option">
+      <div style="text-align:right;"><div style="font-size:16px; font-weight:900;">نسخة احتياطية</div><div style="font-size:13px; color:var(--text-3); font-weight:700; margin-top:6px;">تحميل ملف بيانات العملاء</div></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:0.6;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </button>
+    <button class="sheet-cancel" id="btnCloseSettings">إغلاق</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span class="tick" id="toastIcon">✓</span><span id="toastText">تم بنجاح</span></div>
 
 <script>
-// ============== CONFIG (same backend as the desktop app) ==============
+// ============== THEMES ENGINE ==============
+const savedTheme = localStorage.getItem('smartcash_theme') || 'default';
+document.body.setAttribute('data-theme', savedTheme);
+function updateMetaThemeColor() {
+  const t = document.body.getAttribute('data-theme');
+  const colors = { 'default':'#07060B', 'cyber':'#05050A', 'midnight':'#0A0E17', 'forest':'#0F1711', 'velvet':'#140404', 'pearl':'#EAECEF', 'rose':'#FDF3F5', 'mint':'#EEF7F2', 'sunset':'#FDF6EE', 'lavender':'#F3F1FA'};
+  document.getElementById('metaThemeColor').setAttribute('content', colors[t] || '#07060B');
+}
+updateMetaThemeColor();
+const THEME_LABELS = {default:'Gold',pearl:'Pearl',cyber:'Cyber',midnight:'Night',forest:'Forest',velvet:'Velvet',rose:'Rose',mint:'Mint',sunset:'Sunset',lavender:'Lavender'};
+function updateWheelHub(theme){
+  const activeWrap = document.querySelector(`.tc-wrap[data-theme="${theme}"] .tc`);
+  const hubSwatch = document.getElementById('wheelHubSwatch');
+  const hubLabel = document.getElementById('wheelHubLabel');
+  if(activeWrap && hubSwatch) hubSwatch.style.background = getComputedStyle(activeWrap).backgroundImage;
+  if(hubLabel) hubLabel.textContent = THEME_LABELS[theme] || theme;
+}
+const themeWheelEl = document.getElementById('themeWheel');
+document.querySelectorAll('.tc-wrap').forEach(w => {
+  w.classList.toggle('active', w.getAttribute('data-theme') === savedTheme);
+  w.addEventListener('click', () => {
+    document.querySelectorAll('.tc-wrap').forEach(x => x.classList.remove('active'));
+    w.classList.add('active');
+    const theme = w.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('smartcash_theme', theme);
+    updateMetaThemeColor();
+    updateWheelHub(theme);
+    setTimeout(()=> themeWheelEl.classList.remove('open'), 220);
+  });
+});
+updateWheelHub(savedTheme);
+document.getElementById('wheelHub').addEventListener('click', ()=>{
+  themeWheelEl.classList.toggle('open');
+});
+
+// ============== ICONS (SVG) ==============
+const iconClock = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+const iconInfinity = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg>`;
+const iconAlert = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>`;
+
+// ============== CONFIG & FIREBASE ==============
 const FIREBASE_URL = "https://smartcash-crm-default-rtdb.europe-west1.firebasedatabase.app/clients.json?auth=cjh6c2T0lfKDQ2glADkUumrBlpQyQLWtHqr33axG";
-const SECRET_KEY = "M0r0o_Sm@rtC@sh_S3cr3tK3y_2026!!";
-const GRADIENTS = ["#E8B84B,#B8862A","#5AC8FA,#3C8EC7","#3DDC84,#1FA83A","#FF9F43,#D97B1E","#BF5AF2,#8E3FC1"];
+let currentSecretKey = localStorage.getItem('smartcash_secret') || "M0r0o_Sm@rtC@sh_S3cr3tK3y_2026!!";
+document.getElementById('txtSecretKey').value = currentSecretKey;
 
 let clientsCache = [];
 let selectedForRenewal = null;
+let newComputedExpiry = null;
+let hideSuspended = false;
+const AVATAR_GRADIENTS = ["#E8B84B,#B8862A","#5AC8FA,#3C8EC7","#3DDC84,#1FA83A","#FF9F43,#D97B1E","#BF5AF2,#8E3FC1","#FF6B9D,#C23E6E","#4FD1C5,#2C9C90"];
+function avatarColor(i){ const c = AVATAR_GRADIENTS[Math.abs(i) % AVATAR_GRADIENTS.length].split(','); return `linear-gradient(135deg, ${c[0]}, ${c[1]})`; }
 
-// ============== toast ==============
+// ============== TOAST ==============
 let toastTimer;
-function toast(msg){
+function toast(msg, isError = false){
   const el = document.getElementById('toast');
   document.getElementById('toastText').textContent = msg;
+  document.getElementById('toastIcon').textContent = isError ? '!' : '✓';
+  if(isError) el.classList.add('error'); else el.classList.remove('error');
   el.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>el.classList.remove('show'), 2200);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 3000);
 }
 
-// ============== AES-256-CBC with random IV prefix (matches LicenseGenerator.cs) ==============
-function getValidKeyString(key){
-  if(key.length < 32) return key.padEnd(32,'X');
-  if(key.length > 32) return key.slice(0,32);
-  return key;
-}
+// ============== CRYPTO & NETWORK (OFFLINE CACHING) ==============
+function getValidKeyString(key){ if(key.length<32)return key.padEnd(32,'X'); if(key.length>32)return key.slice(0,32); return key; }
 function bytesToBase64(bytes){ let bin=''; for(let b of bytes) bin+=String.fromCharCode(b); return btoa(bin); }
 async function generateLicenseKey(hardwareId, expiryDate){
-  const dateStr = expiryDate.toISOString().slice(0,10);
-  const plainText = `${hardwareId}|${dateStr}`;
-  const keyBytes = new TextEncoder().encode(getValidKeyString(SECRET_KEY));
+  const dateStr = expiryDate.toISOString().slice(0,10); const plainText = `${hardwareId}|${dateStr}`;
+  const keyBytes = new TextEncoder().encode(getValidKeyString(currentSecretKey));
   const iv = crypto.getRandomValues(new Uint8Array(16));
   const cryptoKey = await crypto.subtle.importKey('raw', keyBytes, {name:'AES-CBC'}, false, ['encrypt']);
   const cipherBuf = await crypto.subtle.encrypt({name:'AES-CBC', iv}, cryptoKey, new TextEncoder().encode(plainText));
-  const combined = new Uint8Array(iv.length + cipherBuf.byteLength);
-  combined.set(iv,0); combined.set(new Uint8Array(cipherBuf), iv.length);
+  const combined = new Uint8Array(iv.length + cipherBuf.byteLength); combined.set(iv,0); combined.set(new Uint8Array(cipherBuf), iv.length);
   return bytesToBase64(combined);
 }
 
-// ============== Firebase REST ==============
-async function fetchClients(){
-  const res = await fetch(FIREBASE_URL);
-  const data = await res.json();
-  return Array.isArray(data) ? data.filter(Boolean) : [];
-}
-async function saveClients(list){
-  await fetch(FIREBASE_URL, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(list)});
+async function fetchClients(){ 
+  try {
+    const res = await fetch(FIREBASE_URL); 
+    if(!res.ok) throw new Error("Network Error");
+    const data = await res.json(); 
+    let parsed = [];
+    if(Array.isArray(data)) parsed = data.filter(Boolean);
+    else if(data) parsed = Object.values(data).filter(Boolean);
+    localStorage.setItem('smartcash_cache', JSON.stringify(parsed));
+    return parsed;
+  } catch(e) {
+    const cached = localStorage.getItem('smartcash_cache');
+    if(cached) {
+      toast('تم عرض البيانات من الذاكرة لعدم توفر إنترنت', true);
+      return JSON.parse(cached);
+    }
+    throw e;
+  }
 }
 
-// ============== status / formatting (matches ClientProfile.cs) ==============
-function dateOnly(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
-function getStatus(expiryStr){
-  if(!expiryStr) return {cls:'expired', text:'غير معروف'};
-  const today = dateOnly(new Date()), exp = dateOnly(expiryStr);
-  const days = Math.round((exp-today)/86400000);
-  if(days<0) return {cls:'expired', text:'منتهي الصلاحية'};
-  if(days===0) return {cls:'today', text:'ينتهي اليوم'};
-  return {cls:'active', text:`نشط (${days} يوم)`};
+async function saveClients(list){
+  localStorage.setItem('smartcash_cache', JSON.stringify(list));
+  try {
+    const res = await fetch(FIREBASE_URL, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(list)});
+    if(!res.ok) throw new Error("Network Error");
+  } catch(e) {
+    toast('تم الحفظ محلياً! سيتم الرفع عند عودة الإنترنت', true);
+  }
 }
+
+function copyToClipboard(text){
+  try{ navigator.clipboard.writeText(text); }catch(e){
+    const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(err){} document.body.removeChild(ta);
+  }
+}
+
+// ============== VISIBILITY TOGGLE ==============
+document.getElementById('btnToggleVis').addEventListener('click', ()=>{
+  hideSuspended = !hideSuspended;
+  const icon = document.getElementById('visIcon');
+  if(hideSuspended){
+    icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`;
+    document.getElementById('btnToggleVis').classList.add('active-eye');
+    toast('تم إخفاء العملاء المعطلين');
+  }else{
+    icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+    document.getElementById('btnToggleVis').classList.remove('active-eye');
+  }
+  renderClients(document.getElementById('searchInput').value);
+});
+
+// ============== RENDER CLIENTS ==============
+function dateOnly(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
 function fmtDate(expiryStr){
-  if(!expiryStr) return '--/--/----';
-  const d = new Date(expiryStr);
+  if(!expiryStr) return '--/--/----'; const d = new Date(expiryStr);
+  if(isNaN(d)) return '--/--/----';
+  if(d.getFullYear() === 2000) return 'معطل تماماً'; if(d.getFullYear() > 2090) return 'مدى الحياة';
   return `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`;
 }
 function initials(name){ return (name||'').trim().charAt(0).toUpperCase() || '?'; }
-function colorFor(i){ const c = GRADIENTS[Math.abs(i) % GRADIENTS.length].split(','); return `linear-gradient(135deg, ${c[0]}, ${c[1]})`; }
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function filterClients(){ renderClients(document.getElementById('searchInput').value); }
 
-// ============== render clients ==============
 function renderClients(filter=""){
-  const list = document.getElementById('clientsList');
-  const empty = document.getElementById('emptyState');
+  const list = document.getElementById('clientsList'); const empty = document.getElementById('emptyState');
   const q = filter.trim().toLowerCase();
-  const filtered = clientsCache.filter(c => (c.Name||'').toLowerCase().includes(q));
-  document.getElementById('countLabel').textContent = `${clientsCache.length} عملاء`;
+  
+  const filtered = clientsCache.filter(c => {
+    if(hideSuspended && c.LastExpiryDate) {
+      const d = new Date(c.LastExpiryDate);
+      if(!isNaN(d) && d.getFullYear() === 2000) return false;
+    }
+    return (c.Name||'').toLowerCase().includes(q);
+  });
+  
+  document.getElementById('countLabel').textContent = `${filtered.length} عملاء`;
 
   if(filtered.length === 0){
     list.innerHTML = '';
-    if(clientsCache.length === 0){
-      document.getElementById('emptyTitle').textContent = 'لا يوجد عملاء بعد';
-      document.getElementById('emptyText').innerHTML = 'أضف أول عميل من تبويب<br>«توليد مفتاح».';
-    } else {
-      document.getElementById('emptyTitle').textContent = 'لا يوجد نتائج';
-      document.getElementById('emptyText').innerHTML = 'جرّبي اسم مختلف أو امسحي البحث<br>لعرض كل العملاء.';
-    }
-    empty.classList.add('show');
-    return;
+    document.getElementById('emptyTitle').textContent = clientsCache.length === 0 ? 'لا يوجد عملاء' : 'لا يوجد نتائج';
+    empty.classList.add('show'); return;
   }
   empty.classList.remove('show');
 
   const sorted = [...filtered].sort((a,b)=> new Date(a.LastExpiryDate||'9999-12-31') - new Date(b.LastExpiryDate||'9999-12-31'));
-  list.innerHTML = sorted.map((c)=>{
-    const idx = clientsCache.indexOf(c);
-    const st = getStatus(c.LastExpiryDate);
-    return `<div class="client-card" data-idx="${idx}">
-      <div class="avatar" style="background:${colorFor(idx)}">${escapeHtml(initials(c.Name))}</div>
+  list.innerHTML = sorted.map((c, renderIdx)=>{
+    const origIdx = clientsCache.indexOf(c);
+    const exp = c.LastExpiryDate ? new Date(c.LastExpiryDate) : null;
+    let isSuspended = false, isLifetime = false, days = 0;
+    
+    if(exp && !isNaN(exp)) {
+      isSuspended = exp.getFullYear() === 2000;
+      isLifetime = exp.getFullYear() > 2090;
+      const today = dateOnly(new Date());
+      days = Math.round((dateOnly(exp)-today)/86400000);
+    }
+    
+    let stCls = 'active', stTxt = `نشط (${days} يوم)`;
+    if(isSuspended) { stCls = 'suspended'; stTxt = 'معطل 🚫'; }
+    else if(isLifetime) { stCls = 'lifetime'; stTxt = 'مدى الحياة ♾️'; }
+    else if(days < 0) { stCls = 'expired'; stTxt = 'منتهي الصلاحية'; }
+    else if(days === 0) { stCls = 'today'; stTxt = 'ينتهي اليوم'; }
+
+    return `<div class="client-card ${isSuspended?'':'breathe'}" data-hwid="${escapeHtml(c.HardwareId)}" style="animation-delay:${(renderIdx%6)*0.4}s">
+      <div class="avatar" style="background:${avatarColor(origIdx)}">${escapeHtml(initials(c.Name))}</div>
       <div class="client-info">
         <div class="client-name">${escapeHtml(c.Name||'')}</div>
+        <div class="hwid-pill"><span>HWID: ${escapeHtml(c.HardwareId||'')}</span></div>
         <div class="client-meta">
-          <span>${fmtDate(c.LastExpiryDate)}</span><span class="dot"></span>
-          <span class="badge ${st.cls}">${st.text}</span>
+          <span style="font-weight:800;">${fmtDate(c.LastExpiryDate)}</span><span class="dot"></span>
+          <span class="badge ${stCls}">${stTxt}</span>
         </div>
       </div>
-      <button class="icon-btn-sm" data-hwid="${escapeHtml(c.HardwareId||'')}" title="نسخ كود الجهاز">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-      </button>
+      <div class="card-actions">
+        <button class="icon-btn-sm btn-copy-hwid" title="نسخ كود الجهاز"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+        <button class="icon-btn-sm btn-copy-key" data-key="${escapeHtml(c.LastGeneratedKey||'')}" title="نسخ المفتاح"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></button>
+      </div>
     </div>`;
   }).join('');
 }
-function filterClients(){ renderClients(document.getElementById('searchInput').value); }
+document.getElementById('searchInput').addEventListener('input', filterClients);
 
 async function loadClients(showSpinner){
   if(showSpinner) document.getElementById('clientsList').innerHTML = `<div class="spinner-wrap"><div class="spinner"></div></div>`;
@@ -481,181 +815,289 @@ async function loadClients(showSpinner){
     clientsCache = await fetchClients();
     renderClients(document.getElementById('searchInput').value);
     refreshAutofillLists();
+    processNotifications();
   }catch(e){
     document.getElementById('clientsList').innerHTML = '';
-    document.getElementById('emptyTitle').textContent = 'تعذر الاتصال بالخادم';
-    document.getElementById('emptyText').textContent = 'تحقق من الإنترنت وحاول مرة أخرى.';
+    document.getElementById('emptyTitle').textContent = 'لا يوجد اتصال';
+    document.getElementById('emptyText').textContent = 'تأكد من اتصالك بالإنترنت.';
     document.getElementById('emptyState').classList.add('show');
   }
 }
-document.getElementById('gearBtn').addEventListener('click', ()=> loadClients(true));
 
 document.getElementById('clientsList').addEventListener('click', (e)=>{
-  const copyBtn = e.target.closest('.icon-btn-sm');
-  if(copyBtn){
-    e.stopPropagation();
-    copyToClipboard(copyBtn.getAttribute('data-hwid'));
-    toast('تم نسخ كود الجهاز');
-    return;
-  }
+  const copyHwidBtn = e.target.closest('.btn-copy-hwid');
+  if(copyHwidBtn){ e.stopPropagation(); copyToClipboard(copyHwidBtn.closest('.client-card').getAttribute('data-hwid')); toast('تم نسخ كود الجهاز'); return; }
+  const copyKeyBtn = e.target.closest('.btn-copy-key');
+  if(copyKeyBtn){ e.stopPropagation(); const key = copyKeyBtn.getAttribute('data-key'); if(key){copyToClipboard(key); toast('تم نسخ المفتاح 🔑');}else toast('لا يوجد مفتاح', true); return; }
+  
   const card = e.target.closest('.client-card');
-  if(card) openSheet(clientsCache[Number(card.getAttribute('data-idx'))]);
+  if(card){ const hwid = card.getAttribute('data-hwid'); openSheet(clientsCache.find(c=>c.HardwareId===hwid)); }
 });
 
-// ============== bottom sheet (renew) ==============
+// ============== NOTIFICATIONS ==============
+function processNotifications() {
+  const today = dateOnly(new Date()); const alerts = [];
+  clientsCache.forEach(c => {
+    if(!c.LastExpiryDate) return;
+    const exp = new Date(c.LastExpiryDate);
+    if(isNaN(exp) || exp.getFullYear() > 2090 || exp.getFullYear() === 2000) return;
+    
+    const days = Math.round((dateOnly(exp) - today)/86400000);
+    if(days < 0) alerts.push({client: c, days, type: 'expired'});
+    else if(days <= 7) alerts.push({client: c, days, type: 'warning'});
+  });
+  alerts.sort((a,b) => a.days - b.days);
+  
+  const badges = document.querySelectorAll('.bell-badge'); const bellIcons = document.querySelectorAll('.bell-icon');
+  if(alerts.length > 0) {
+    badges.forEach(b => { b.textContent = alerts.length; b.style.display = 'flex'; });
+    bellIcons.forEach(i => i.classList.add('bell-pulse'));
+  } else {
+    badges.forEach(b => { b.style.display = 'none'; });
+    bellIcons.forEach(i => i.classList.remove('bell-pulse'));
+  }
+  
+  const list = document.getElementById('notiListTop');
+  if(alerts.length === 0) {
+    list.innerHTML = `<div style="text-align:center; color:var(--text-3); font-size:15px; padding:30px 0; font-weight:800;">لا توجد تنبيهات حالية 🎉</div>`;
+  } else {
+    list.innerHTML = alerts.map(a => {
+      const isExp = a.type === 'expired';
+      const color = isExp ? 'var(--red)' : 'var(--primary)';
+      const bg = isExp ? 'var(--red-soft)' : 'var(--primary-soft)';
+      const text = isExp ? `منتهي منذ ${Math.abs(a.days)} يوم` : (a.days===0 ? 'ينتهي اليوم!' : `ينتهي خلال ${a.days} يوم`);
+      return `
+        <div class="noti-card" style="border-right: 4px solid ${color};" onclick="goToClientRenew('${escapeHtml(a.client.HardwareId)}')">
+          <div class="noti-icon" style="background:${bg}; color:${color};">${isExp ? iconAlert : iconClock}</div>
+          <div class="noti-info">
+            <div class="noti-name">${escapeHtml(a.client.Name)}</div>
+            <div class="noti-desc" style="color:${color}">${text}</div>
+          </div>
+          <svg style="opacity:0.6; color:var(--text-3);" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+function goToClientRenew(hwid) {
+  closeNotiDropdown(); switchTab('clients');
+  const client = clientsCache.find(c => c.HardwareId === hwid);
+  if(client) { setTimeout(() => openSheet(client), 300); }
+}
+
+const notiDropdown = document.getElementById('notiDropdown'), notiScrim = document.getElementById('notiScrim');
+function openNotiDropdown() { notiDropdown.classList.add('show'); notiScrim.classList.add('show'); }
+function closeNotiDropdown() { notiDropdown.classList.remove('show'); notiScrim.classList.remove('show'); }
+document.querySelectorAll('.btn-bell').forEach(btn => btn.addEventListener('click', openNotiDropdown));
+document.getElementById('btnCloseNotiDropdown').addEventListener('click', closeNotiDropdown);
+notiScrim.addEventListener('click', closeNotiDropdown);
+
+// ============== PROFILE & RENEWAL ==============
+const toggleSuspend = document.getElementById('toggleSuspend');
+const customRenewDate = document.getElementById('customRenewDate');
+
 function openSheet(client){
-  selectedForRenewal = client;
-  document.getElementById('sheetClientName').textContent = `تجديد: ${client.Name}`;
+  selectedForRenewal = client; newComputedExpiry = null;
+  document.getElementById('editClientNameInput').value = client.Name || '';
+  customRenewDate.value = '';
+  document.querySelectorAll('.sheet-opt-box').forEach(b => b.classList.remove('selected'));
+  
+  const hasExpiry = client.LastExpiryDate ? true : false;
+  const exp = hasExpiry ? new Date(client.LastExpiryDate) : dateOnly(new Date());
+  let isSuspended = false;
+  if(hasExpiry && !isNaN(exp)) isSuspended = exp.getFullYear() === 2000;
+  
+  toggleSuspend.checked = !isSuspended;
+  document.getElementById('renewContainer').style.display = isSuspended ? 'none' : 'block';
+  document.getElementById('btnConfirmRenew').disabled = true;
+  document.getElementById('btnConfirmRenew').textContent = isSuspended ? "تأكيد واستخراج المفتاح" : "حفظ التعديلات وإنشاء مفتاح";
+  
+  if(isSuspended) {
+    document.getElementById('sheetCurrentDate').textContent = 'معطل';
+    document.getElementById('sheetCurrentDays').innerHTML = `${iconAlert} الحساب موقوف`;
+  } else if(!isNaN(exp) && exp.getFullYear() > 2090) {
+    document.getElementById('sheetCurrentDate').textContent = 'مدى الحياة';
+    document.getElementById('sheetCurrentDays').innerHTML = `${iconInfinity} ترخيص دائم`;
+  } else {
+    document.getElementById('sheetCurrentDate').textContent = fmtDate(exp);
+    const days = Math.round((dateOnly(exp)-dateOnly(new Date()))/86400000);
+    document.getElementById('sheetCurrentDays').innerHTML = days >= 0 ? `${iconClock} باقي ${days} يوم` : `${iconAlert} منتهي منذ ${Math.abs(days)} يوم`;
+  }
+
+  document.getElementById('sheetNewDate').textContent = '--/--/----';
+  document.getElementById('sheetNewDays').innerHTML = 'اختر التحديث';
   document.getElementById('sheetOverlay').classList.add('show');
 }
 function closeSheet(){ document.getElementById('sheetOverlay').classList.remove('show'); }
-document.getElementById('sheetOverlay').addEventListener('click', (e)=>{ if(e.target.id==='sheetOverlay') closeSheet(); });
 document.getElementById('btnCancelSheet').addEventListener('click', closeSheet);
-document.querySelectorAll('.sheet-option').forEach(opt=>{
-  opt.addEventListener('click', async ()=>{
-    const months = Number(opt.getAttribute('data-m'));
-    closeSheet();
-    if(!selectedForRenewal) return;
-    await renewClient(selectedForRenewal, months);
-    selectedForRenewal = null;
+document.getElementById('sheetOverlay').addEventListener('click', (e)=>{ if(e.target.id==='sheetOverlay') closeSheet(); });
+
+toggleSuspend.addEventListener('change', (e) => {
+  if(!e.target.checked) {
+    document.getElementById('suspendDialog').classList.add('show');
+    e.target.checked = true; // revert temporarily
+  } else {
+    document.getElementById('renewContainer').style.display = 'block';
+    updateProjectedUI(new Date()); // default to today
+    document.getElementById('btnConfirmRenew').textContent = "حفظ التعديلات وإنشاء مفتاح";
+  }
+});
+
+document.getElementById('btnCancelSuspend').addEventListener('click', () => { document.getElementById('suspendDialog').classList.remove('show'); });
+document.getElementById('btnConfirmSuspend').addEventListener('click', () => {
+  document.getElementById('suspendDialog').classList.remove('show');
+  toggleSuspend.checked = false;
+  document.getElementById('renewContainer').style.display = 'none';
+  updateProjectedUI(new Date(2000, 0, 1));
+  document.getElementById('btnConfirmRenew').textContent = "تأكيد التعطيل وتوليد مفتاح إيقاف";
+});
+
+function updateProjectedUI(newDateObj) {
+  newComputedExpiry = newDateObj; document.getElementById('btnConfirmRenew').disabled = false;
+  if(newDateObj.getFullYear() === 2000) return;
+  if(newDateObj.getFullYear() > 2090) {
+    document.getElementById('sheetNewDate').textContent = 'مدى الحياة';
+    document.getElementById('sheetNewDays').innerHTML = `${iconInfinity} ترخيص دائم`; return;
+  }
+  const today = dateOnly(new Date()); document.getElementById('sheetNewDate').textContent = fmtDate(newDateObj);
+  const projectedDays = Math.round((newDateObj-today)/86400000);
+  document.getElementById('sheetNewDays').innerHTML = `${iconClock} إجمالي ${projectedDays} يوم`;
+}
+
+document.querySelectorAll('.sheet-opt').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    if(!selectedForRenewal || !toggleSuspend.checked) return;
+    document.querySelectorAll('.sheet-opt').forEach(b => b.classList.remove('selected')); opt.classList.add('selected');
+    customRenewDate.value = '';
+    const months = Number(opt.getAttribute('data-m')); const today = dateOnly(new Date());
+    let baseDate = today;
+    if(selectedForRenewal.LastExpiryDate) {
+      const d = new Date(selectedForRenewal.LastExpiryDate);
+      if(!isNaN(d) && dateOnly(d) >= today && d.getFullYear() !== 2000) baseDate = d;
+    }
+    let projected = (months === 999) ? new Date(2099, 11, 31) : new Date(baseDate.setMonth(baseDate.getMonth() + months));
+    updateProjectedUI(projected);
   });
 });
-async function renewClient(client, monthsToAdd){
-  try{
-    const today = dateOnly(new Date());
-    const base = (client.LastExpiryDate && dateOnly(client.LastExpiryDate) >= today) ? new Date(client.LastExpiryDate) : today;
-    const newExpiry = new Date(base); newExpiry.setMonth(newExpiry.getMonth()+monthsToAdd);
-    const newKey = await generateLicenseKey(client.HardwareId, newExpiry);
+customRenewDate.addEventListener('change', () => {
+  if(!customRenewDate.value) return;
+  document.querySelectorAll('.sheet-opt').forEach(b => b.classList.remove('selected'));
+  updateProjectedUI(new Date(customRenewDate.value));
+});
+
+document.getElementById('editClientNameInput').addEventListener('input', () => {
+  if(!newComputedExpiry && toggleSuspend.checked) document.getElementById('btnConfirmRenew').disabled = false;
+});
+
+document.getElementById('btnConfirmRenew').addEventListener('click', async () => {
+  if(!selectedForRenewal) return;
+  const newName = document.getElementById('editClientNameInput').value.trim();
+  if(!newName) { toast('الاسم مطلوب', true); return; }
+  
+  document.getElementById('btnConfirmRenew').disabled = true;
+  try {
     const list = await fetchClients();
-    const existing = list.find(c=>c.Name === client.Name);
-    if(existing){
-      existing.LastExpiryDate = newExpiry.toISOString();
-      existing.LastGeneratedKey = newKey;
-      await saveClients(list);
-      clientsCache = list;
-      renderClients(document.getElementById('searchInput').value);
-      copyToClipboard(newKey);
-      toast(`تم تجديد ${client.Name} — نُسخ المفتاح`);
+    const existing = list.find(c => c.HardwareId === selectedForRenewal.HardwareId);
+    if(existing) {
+      existing.Name = newName;
+      if(newComputedExpiry) {
+        existing.LastExpiryDate = newComputedExpiry.toISOString();
+        const newKey = await generateLicenseKey(existing.HardwareId, newComputedExpiry);
+        existing.LastGeneratedKey = newKey; copyToClipboard(newKey);
+      }
+      await saveClients(list); clientsCache = list; renderClients(document.getElementById('searchInput').value); processNotifications();
+      if(newComputedExpiry && newComputedExpiry.getFullYear() === 2000) toast('تم التعطيل ونسخ المفتاح 🚫');
+      else if(newComputedExpiry) toast('تم التحديث ونسخ المفتاح 🔑');
+      else toast('تم تحديث الاسم بنجاح ✓');
     }
-  }catch(e){ toast('حدث خطأ أثناء التجديد'); }
-}
+  } catch(e) { /* Error handled in saveClients */ }
+  closeSheet();
+});
 
-function copyToClipboard(text){
-  if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));
-  else fallbackCopy(text);
-}
-function fallbackCopy(text){
-  const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); }catch(e){}
-  document.body.removeChild(ta);
-}
+// ============== SETTINGS ==============
+document.querySelectorAll('.btn-settings').forEach(btn => btn.addEventListener('click', ()=> { document.getElementById('settingsOverlay').classList.add('show'); }));
+document.getElementById('btnCloseSettings').addEventListener('click', ()=>document.getElementById('settingsOverlay').classList.remove('show'));
+document.getElementById('settingsOverlay').addEventListener('click', (e)=>{ if(e.target.id==='settingsOverlay') document.getElementById('settingsOverlay').classList.remove('show'); });
 
-// ============== generate tab ==============
-const txtName = document.getElementById('txtName');
-const txtHwid = document.getElementById('txtHwid');
-const dpExpiry = document.getElementById('dpExpiry');
-const datePill = document.getElementById('datePill');
-const daysLeft = document.getElementById('daysLeft');
+document.getElementById('btnToggleEye').addEventListener('click', () => {
+  const input = document.getElementById('txtSecretKey');
+  if(input.type === 'password') { input.type = 'text'; document.getElementById('eyeIcon').innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`; }
+  else { input.type = 'password'; document.getElementById('eyeIcon').innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`; }
+});
+document.getElementById('txtSecretKey').addEventListener('change', (e) => { currentSecretKey = e.target.value; localStorage.setItem('smartcash_secret', currentSecretKey); });
+document.getElementById('btnForceSync').addEventListener('click', ()=>{ document.getElementById('settingsOverlay').classList.remove('show'); loadClients(true); });
+document.getElementById('btnBackup').addEventListener('click', ()=>{
+  if(clientsCache.length === 0) return;
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(clientsCache, null, 2));
+  const a = document.createElement('a'); a.href = dataStr; a.download = `SmartCash_Clients_${new Date().toISOString().slice(0,10)}.json`; a.click(); toast('تم التحميل 💾');
+});
 
-function addMonths(d,n){ const x=new Date(d); x.setMonth(x.getMonth()+n); return x; }
+// ============== GENERATE KEY ==============
+const dpExpiry = document.getElementById('dpExpiry'), datePill = document.getElementById('datePillText'), daysLeft = document.getElementById('daysLeftText');
+function addMonths(d,n){ if(n===999) return new Date(2099, 11, 31); const x=new Date(d); x.setMonth(x.getMonth()+n); return x; }
 function toDateInputValue(d){ return d.toISOString().slice(0,10); }
-
 function updateDateDisplay(){
   const d = new Date(dpExpiry.value);
-  datePill.childNodes[0].nodeValue = `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()} `;
-  const days = Math.floor((d - dateOnly(new Date()))/86400000);
-  daysLeft.textContent = days >= 0 ? `⏳ باقي ${days} يوم` : `⚠️ في الماضي`;
+  if(d.getFullYear() > 2090) { datePill.textContent = `مدى الحياة`; daysLeft.innerHTML = `${iconInfinity} ترخيص دائم`; }
+  else { datePill.textContent = `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`; const days = Math.floor((d - dateOnly(new Date()))/86400000); daysLeft.innerHTML = days >= 0 ? `${iconClock} باقي ${days} يوم` : `${iconAlert} في الماضي`; }
 }
 document.querySelectorAll('.duration-chip').forEach(chip=>{
-  chip.addEventListener('click', ()=>{
-    document.querySelectorAll('.duration-chip').forEach(c=>c.classList.remove('selected'));
-    chip.classList.add('selected');
-    dpExpiry.value = toDateInputValue(addMonths(new Date(), Number(chip.getAttribute('data-m'))));
-    updateDateDisplay();
-  });
+  chip.addEventListener('click', ()=>{ document.querySelectorAll('.duration-chip').forEach(c=>c.classList.remove('selected')); chip.classList.add('selected'); dpExpiry.value = toDateInputValue(addMonths(new Date(), Number(chip.getAttribute('data-m')))); updateDateDisplay(); });
 });
-dpExpiry.addEventListener('change', ()=>{
-  document.querySelectorAll('.duration-chip').forEach(c=>c.classList.remove('selected'));
-  updateDateDisplay();
-});
-dpExpiry.value = toDateInputValue(addMonths(new Date(),6));
-updateDateDisplay();
+dpExpiry.addEventListener('change', ()=>{ document.querySelectorAll('.duration-chip').forEach(c=>c.classList.remove('selected')); updateDateDisplay(); });
+dpExpiry.value = toDateInputValue(addMonths(new Date(),6)); updateDateDisplay();
+document.getElementById('pasteBtn').addEventListener('click', async ()=>{ try{ const t = await navigator.clipboard.readText(); if(t){ document.getElementById('txtHwid').value = t.trim(); toast('تم اللصق'); } }catch(e){ toast('الرجاء اللصق يدوياً', true); } });
 
-document.getElementById('pasteBtn').addEventListener('click', async ()=>{
-  try{
-    const text = await navigator.clipboard.readText();
-    if(text){ txtHwid.value = text.trim(); toast('تم اللصق'); }
-  }catch(e){ toast('اضغط مطولاً على الحقل والصق يدويًا'); }
-});
-
-let autoFilling = false;
-txtName.addEventListener('input', ()=>{
-  if(autoFilling) return;
-  const m = clientsCache.find(c=>(c.Name||'').toLowerCase() === txtName.value.trim().toLowerCase());
-  if(m && m.HardwareId !== txtHwid.value){ autoFilling=true; txtHwid.value = m.HardwareId||''; autoFilling=false; }
-});
-txtHwid.addEventListener('input', ()=>{
-  if(autoFilling) return;
-  const m = clientsCache.find(c=>(c.HardwareId||'').toLowerCase() === txtHwid.value.trim().toLowerCase());
-  if(m && m.Name !== txtName.value){ autoFilling=true; txtName.value = m.Name||''; autoFilling=false; }
-});
 function refreshAutofillLists(){
   document.getElementById('namesList').innerHTML = clientsCache.map(c=>`<option value="${escapeHtml(c.Name||'')}">`).join('');
   document.getElementById('hwidsList').innerHTML = clientsCache.map(c=>`<option value="${escapeHtml(c.HardwareId||'')}">`).join('');
 }
-
-document.getElementById('btnGenerate').addEventListener('click', async ()=>{
-  const name = txtName.value.trim(), hwid = txtHwid.value.trim();
-  if(!name || !hwid){ toast('الرجاء إدخال اسم العميل وكود الجهاز'); return; }
-  const expiry = new Date(dpExpiry.value);
-  const btn = document.getElementById('btnGenerate');
-  btn.disabled = true;
-  try{
-    const key = await generateLicenseKey(hwid, expiry);
-    const out = document.getElementById('keyOut');
-    out.textContent = key; out.classList.add('show');
-
-    const list = await fetchClients();
-    const existing = list.find(c=>(c.Name||'').toLowerCase() === name.toLowerCase());
-    if(existing){ existing.HardwareId=hwid; existing.LastExpiryDate=expiry.toISOString(); existing.LastGeneratedKey=key; }
-    else list.push({Name:name, HardwareId:hwid, LastExpiryDate:expiry.toISOString(), LastGeneratedKey:key});
-    await saveClients(list);
-    clientsCache = list;
-    refreshAutofillLists();
-    copyToClipboard(key);
-    toast('تم إنشاء المفتاح ونسخه');
-  }catch(e){ toast('حدث خطأ: '+e.message); }
-  finally{ btn.disabled = false; }
+let autoFilling = false;
+document.getElementById('txtName').addEventListener('input', (e)=>{
+  if(autoFilling) return;
+  const m = clientsCache.find(c=>(c.Name||'').toLowerCase() === e.target.value.trim().toLowerCase());
+  if(m && m.HardwareId !== document.getElementById('txtHwid').value){ autoFilling=true; document.getElementById('txtHwid').value = m.HardwareId||''; autoFilling=false; }
+});
+document.getElementById('txtHwid').addEventListener('input', (e)=>{
+  if(autoFilling) return;
+  const m = clientsCache.find(c=>(c.HardwareId||'').toLowerCase() === e.target.value.trim().toLowerCase());
+  if(m && m.Name !== document.getElementById('txtName').value){ autoFilling=true; document.getElementById('txtName').value = m.Name||''; autoFilling=false; }
 });
 
-// ============== tabs ==============
-const viewClients = document.getElementById('view-clients');
-const viewGenerate = document.getElementById('view-generate');
-const tabBtnClients = document.getElementById('tabBtnClients');
-const tabBtnGenerate = document.getElementById('tabBtnGenerate');
-tabBtnClients.addEventListener('click', ()=>switchTab('clients'));
-tabBtnGenerate.addEventListener('click', ()=>switchTab('generate'));
+document.getElementById('btnGenerate').addEventListener('click', async ()=>{
+  const name = document.getElementById('txtName').value.trim(), hwid = document.getElementById('txtHwid').value.trim();
+  if(!name || !hwid){ toast('البيانات ناقصة', true); return; }
+  document.getElementById('btnGenerate').disabled = true;
+  try{
+    const expiry = new Date(dpExpiry.value); const key = await generateLicenseKey(hwid, expiry);
+    const out = document.getElementById('keyOut'); out.textContent = key; out.classList.add('show');
+    const list = await fetchClients();
+    const existing = list.find(c=>c.HardwareId === hwid);
+    if(existing){ existing.Name = name; existing.LastExpiryDate = expiry.toISOString(); existing.LastGeneratedKey = key; }
+    else list.push({Name:name, HardwareId:hwid, LastExpiryDate:expiry.toISOString(), LastGeneratedKey:key});
+    await saveClients(list); clientsCache = list; refreshAutofillLists(); processNotifications(); renderClients(document.getElementById('searchInput').value); copyToClipboard(key); toast('تم إنشاء المفتاح ونسخه 🔑');
+  }catch(e){ /* Error handled in saveClients */ }
+  finally{ document.getElementById('btnGenerate').disabled = false; }
+});
+
+// ============== TABS ==============
+document.getElementById('tabBtnClients').addEventListener('click', ()=>switchTab('clients'));
+document.getElementById('tabBtnGenerate').addEventListener('click', ()=>switchTab('generate'));
 function switchTab(tab){
   const isClients = tab === 'clients';
-  viewClients.style.display = isClients ? 'flex' : 'none';
-  viewGenerate.style.display = isClients ? 'none' : 'flex';
-  tabBtnClients.classList.toggle('active', isClients);
-  tabBtnGenerate.classList.toggle('active', !isClients);
-  if(isClients) loadClients(false);
+  document.getElementById('view-clients').style.display = isClients ? 'flex' : 'none';
+  document.getElementById('view-generate').style.display = isClients ? 'none' : 'flex';
+  document.getElementById('tabBtnClients').classList.toggle('active', isClients);
+  document.getElementById('tabBtnGenerate').classList.toggle('active', !isClients);
+  const currentContent = isClients ? document.getElementById('view-clients') : document.getElementById('view-generate');
+  currentContent.querySelectorAll('.fade-in').forEach(el => { el.style.animation = 'none'; el.offsetHeight; el.style.animation = 'fadeIn 0.3s ease-out forwards'; });
+  if(isClients) { document.getElementById('searchInput').value = ''; renderClients(); }
 }
 
-// ============== init ==============
-loadClients(true);
+loadClients(false);
 
-// ============== إضافة كود Service Worker ليعمل Offline ==============
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then((reg) => console.log('Service worker registered.', reg))
-      .catch((err) => console.log('Service worker not registered.', err));
-  });
-}
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); }); }
 </script>
 </body>
 </html>
