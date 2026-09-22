@@ -393,6 +393,23 @@
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
   .toast .tick{ width:24px; height:24px; border-radius:50%; background:var(--primary); color:var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; font-weight:bold;}
   .toast.error .tick { background: var(--red); color:#fff; }
+
+  /* ================= تسريع الأداء للموبايل (Hardware Acceleration) ================= */
+  .aurora, .aurora::before, .client-card, .form-card, .appbar, .tabbar, .icon-btn {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+  .sheet, .top-dropdown {
+    will-change: transform; /* تم استخدام will-change هنا كبديل آمن لا يتعارض مع أكواد الإخفاء الأصلية */
+  }
+  .breathe {
+    will-change: box-shadow;
+  }
+  .aurora::before {
+    will-change: transform;
+  }
 </style>
 </head>
 <body>
@@ -807,7 +824,13 @@ function renderClients(filter=""){
     </div>`;
   }).join('');
 }
-document.getElementById('searchInput').addEventListener('input', filterClients);
+
+// ============== SEARCH DEBOUNCE ==============
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(filterClients, 150);
+});
 
 async function loadClients(showSpinner){
   if(showSpinner) document.getElementById('clientsList').innerHTML = `<div class="spinner-wrap"><div class="spinner"></div></div>`;
@@ -1091,7 +1114,16 @@ function switchTab(tab){
   document.getElementById('tabBtnClients').classList.toggle('active', isClients);
   document.getElementById('tabBtnGenerate').classList.toggle('active', !isClients);
   const currentContent = isClients ? document.getElementById('view-clients') : document.getElementById('view-generate');
-  currentContent.querySelectorAll('.fade-in').forEach(el => { el.style.animation = 'none'; el.offsetHeight; el.style.animation = 'fadeIn 0.3s ease-out forwards'; });
+  
+  currentContent.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animation = 'none';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.animation = 'fadeIn 0.3s ease-out forwards';
+      });
+    });
+  });
+  
   if(isClients) { document.getElementById('searchInput').value = ''; renderClients(); }
 }
 
